@@ -1,7 +1,7 @@
 .filter__text {
     font-size: 12px;
     letter-spacing: 0.92px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin-right: 24px;
 
@@ -42,11 +42,11 @@
 }
 
 .filter__menu__item--selected {
-  background-color: #498144;
+  background-color: #111;
   color: #FFFFFF;
 }
 
 .filter__menu__item--selected:hover {
-  background-color: #498144;
+  background-color: #111;
   color: #FFFFFF;
 }

@@ -17,7 +17,7 @@ export default class CityPin extends PureComponent {
     const {size = 20, boardCount, onClick} = this.props; 
 
     return (
-        <div onClick={onClick} style={{...pinStyle, backgroundColor: '#498144',  borderRadius: "50%", display: 'flex', alignItems: 'center', justifyContent: 'center' ,height: "30px", width: "30px", color: '#FFFFFF', fontSize: 11, fontWeight: 400 , fontFamily: 'Helvetica'}}>{boardCount}</div>
+        <div onClick={onClick} style={{...pinStyle, backgroundColor: '#FFF',  borderRadius: "50%", display: 'flex', alignItems: 'center', justifyContent: 'center' ,height: "30px", width: "30px", color: '#000', fontSize: 11, fontWeight: 400 , fontFamily: 'Helvetica'}}>{boardCount}</div>
     );
   }
 }

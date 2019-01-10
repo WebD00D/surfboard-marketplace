@@ -3,9 +3,9 @@
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  font-family: "Montserrat",tahoma,helvetica,sans-serif;
+  font-family: "Roboto",tahoma,helvetica,sans-serif;
   font-weight: 800;
-  background: #498144;
+  background: #111;
   border: 0;
   color: white;
   width: 200px;
@@ -30,7 +30,7 @@
 }
 
 .button--green {
-  background-color: #498144;
+  background-color: #252525;
   color: #FFFFFF;
 }
 

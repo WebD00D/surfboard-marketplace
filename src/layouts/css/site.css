@@ -3,7 +3,7 @@
 }
 
 .access-wall {
-  background-color: #498144;
+  background-color: #fff;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -16,21 +16,23 @@
 }
 
 .page-header {
-  background-image: url("../images/board-header@2x.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: 150px;
-  background-color: #f5f5f5;
+  background-color: #252525;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
   color: white;
-  font-size: 40px;
+  font-size: 24px;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  background-image: repeating-linear-gradient(120deg, rgb(17, 17, 17), rgb(17, 17, 17) 1px, rgb(32, 32, 32) 1px, rgb(32, 32, 32) 8px);
+
 }
 
 .page-header span {
@@ -48,7 +50,9 @@
 /* mobile */
 
 .board-page-mobile-header {
-  background-image: url("../images/BoardPageBanner@2x.png");
+  background: linear-gradient(rgba(01, 01, 01, 0.7), rgba(01, 01, 01, 0.7)),
+    url('../images/surfer.jpg');
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -140,7 +144,8 @@
 /* end mobile */
 
 .board-page-header {
-  background-image: url("../images/BoardPageBanner@2x.png");
+  background: linear-gradient(rgba(01, 01, 01, 0.4), rgba(01, 01, 01, 0.5)),
+    url('../images/surfer.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -184,6 +189,7 @@
   font-size: 14px;
   height: 26px;
   transition: 0.2s ease;
+  font-weight: 300;
 }
 
 .boardpage-location__area:hover {
@@ -240,7 +246,7 @@
 
 .t-primary {
   letter-spacing: 0.92px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
 
@@ -280,7 +286,7 @@
   width: 100%;
   border: 2px solid #e7eaec;
   border-radius: 6px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   color: #152235;
 }
 
@@ -308,9 +314,9 @@ hr {
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-weight: 800;
-  background: #498144;
+  background: #000;
   border: 0;
   color: white;
   width: 200px;
@@ -337,8 +343,8 @@ hr {
   background-color: #404040;
 }
 
-#_kmts form button[type="submit"] {
-  background-color: green !important;
+#_kmts form button[type='submit'] {
+  background-color: #000 !important;
 }
 
 .publisher-anchor-color a {
@@ -377,7 +383,7 @@ hr {
 }
 
 .message-box__header {
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
@@ -387,7 +393,7 @@ hr {
   padding: 12px;
   margin-top: 14px;
   margin-bottom: 14px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-size: 13px;
   line-height: 17px;
   width: 100%;
@@ -400,7 +406,7 @@ hr {
   padding: 12px;
   margin-top: 14px;
   margin-bottom: 14px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-size: 13px;
   line-height: 17px;
   width: 100%;
@@ -416,11 +422,11 @@ hr {
 
 .message-box__button {
   height: 38px;
-  background-color: #498144;
+  background-color: #111;
   color: white;
   font-size: 14px;
   width: 160px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   border: none;
 }
 
@@ -433,10 +439,10 @@ hr {
   padding-left: 12px;
   padding-right: 12px;
 
-  background-color: #498144;
+  background-color: #111;
   color: white;
   font-size: 14px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -449,10 +455,10 @@ hr {
   align-items: center;
   justify-content: space-between;
   min-height: 80px;
-  border: 1px solid #498144;
+  border: 1px solid #111;
   border-top: none;
   font-size: 12px;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   letter-spacing: 2px;
 }
 
@@ -528,7 +534,7 @@ hr {
 
 .ad {
   border-radius: 4px;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   width: 100%;
   height: auto;
   background-size: cover;
@@ -546,7 +552,7 @@ hr {
 
 /* NEW HOMEPAGE */
 .hp-hero {
-  background-image: url("../images/bike-hero.jpg");
+  background-image: url('../images/bike-hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -560,7 +566,7 @@ hr {
 }
 
 .hp-hero__title {
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-weight: 600;
   color: white;
   font-size: 59px;
@@ -576,7 +582,7 @@ hr {
 }
 
 .hp-copy {
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-weight: 400;
 }
 
@@ -586,7 +592,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Montserrat", tahoma, helvetica, sans-serif;
+  font-family: 'Roboto', tahoma, helvetica, sans-serif;
   font-weight: 500;
   color: white;
   font-size: 14px;

@@ -11,7 +11,7 @@
 }
 
 .login-form__field label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -23,7 +23,7 @@
   height: 100px;
   border: 2px solid rgba(31,35,65,0.36);
   transition: .2s ease;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 11px;
 
   letter-spacing: 2px;
@@ -48,9 +48,9 @@ textarea:focus {
   padding: 0 15px;
   font-size: 14px;
   width: 100%;
-  border: 2px solid #e7eaec;
-  border-radius: 6px;
-  font-family: 'Montserrat',tahoma,helvetica,sans-serif;
+  border-radius: 4px;
+  border: 2px solid #000;
+  font-family: 'Roboto',tahoma,helvetica,sans-serif;
   color: #152235;
   transition: .2s ease;
 }
@@ -100,7 +100,7 @@ select:focus {
   align-items: center;
   position: absolute;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -125,7 +125,7 @@ select:focus {
 }
 
 .create-account__headline {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   letter-spacing: 2px;
   color: rgba(31,35,65,1);
@@ -133,7 +133,7 @@ select:focus {
 }
 
 .tag {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 11px;
   letter-spacing: 1px;
   color: #404040;
@@ -394,7 +394,7 @@ select:focus {
 }
 
 .stab-travel__photo-count {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   top: -5px;
   left: -10px;
   height: 25px;

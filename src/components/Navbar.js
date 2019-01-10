@@ -1,12 +1,12 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import Link from "gatsby-link";
-import cx from "classnames";
-import _ from "lodash";
-import fire from "../fire";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import Link from 'gatsby-link';
+import cx from 'classnames';
+import _ from 'lodash';
+import fire from '../fire';
 
-import "../layouts/css/navbar.css";
-import "../layouts/css/fcss.css";
+import '../layouts/css/navbar.css';
+import '../layouts/css/fcss.css';
 
 class Navbar extends PureComponent {
   constructor(props) {
@@ -76,7 +76,7 @@ class Navbar extends PureComponent {
 
     const shopUser = this.props.userId ? (
       <span className="navbar__logo-title td-none fc-green">
-        Welcome, {this.props.shop_name} |{" "}
+        Welcome, {this.props.shop_name} |{' '}
         <a
           href="#"
           onClick={this.props.signOutUser}
@@ -86,17 +86,14 @@ class Navbar extends PureComponent {
         </a>
       </span>
     ) : (
-      ""
+      ''
     );
 
     return (
       <div className="navbar__wrapper">
         <div className="navbar-mobile">
-          <Link to="/">
-            <img
-              className="navbar__logo"
-              src={require("../layouts/images/BGLogoNew.svg")}
-            />
+          <Link to="/" className="logo">
+            SURF CLUB
           </Link>
 
           <i
@@ -108,14 +105,9 @@ class Navbar extends PureComponent {
         </div>
 
         {this.state.mobileMenuOpen ? (
-          <div className="mobile-menu" >
+          <div className="mobile-menu">
             <div className="mobile-menu__header">
-
-              <img
-                className="navbar__logo"
-                src={require("../layouts/images/bg-logo-color.svg")}
-              />
-
+              <div className="logo">SURF CLUB</div>
 
               <i
                 onClick={() => {
@@ -135,10 +127,12 @@ class Navbar extends PureComponent {
               Buy Boards
             </Link>
             <Link
-            onClick={() => {
-              this.setState({ mobileMenuOpen: false });
-            }}
-             className="mobile-menu__item hover" to="/sell-a-board">
+              onClick={() => {
+                this.setState({ mobileMenuOpen: false });
+              }}
+              className="mobile-menu__item hover"
+              to="/sell-a-board"
+            >
               Sell Boards
             </Link>
 
@@ -152,8 +146,6 @@ class Navbar extends PureComponent {
               FAQs
             </Link>
 
-
-
             <a
               className="mobile-menu__item hover"
               target="_blank"
@@ -162,137 +154,126 @@ class Navbar extends PureComponent {
               Blog
             </a>
 
-
-
             {this.props.userAuthenticated && !this.props.isSeller ? (
               <Link
-              onClick={() => {
-                this.setState({ mobileMenuOpen: false });
-              }}
-               className="mobile-menu__item" to="/sell-with-us">
+                onClick={() => {
+                  this.setState({ mobileMenuOpen: false });
+                }}
+                className="mobile-menu__item"
+                to="/sell-with-us"
+              >
                 Start Selling
               </Link>
             ) : (
-              ""
+              ''
             )}
             {this.props.userAuthenticated ? (
               <Link
-              onClick={() => {
-                this.setState({ mobileMenuOpen: false });
-              }}
-               className="mobile-menu__item hover" to="/account">
-                My Account{" "}
+                onClick={() => {
+                  this.setState({ mobileMenuOpen: false });
+                }}
+                className="mobile-menu__item hover"
+                to="/account"
+              >
+                My Account{' '}
                 {this.props.hasNotifications ? (
                   <i className="fa fa-bell fc-red" />
                 ) : (
-                  ""
-                )}{" "}
+                  ''
+                )}{' '}
               </Link>
             ) : (
-              ""
+              ''
             )}
 
             {this.props.userAuthenticated ? (
               <Link
                 to="/authentication"
-                onClick={ () => {
-                this.props.signOutUser;
-                this.setState({ mobileMenuOpen: false });
-
-                } }
+                onClick={() => {
+                  this.props.signOutUser;
+                  this.setState({ mobileMenuOpen: false });
+                }}
                 className="mobile-menu__item hover"
               >
                 Signout
               </Link>
             ) : (
               <Link
-              onClick={() => {
-                this.setState({ mobileMenuOpen: false });
-              }}
-              className="mobile-menu__item " to="/authentication">
+                onClick={() => {
+                  this.setState({ mobileMenuOpen: false });
+                }}
+                className="mobile-menu__item "
+                to="/authentication"
+              >
                 Login / Register
               </Link>
             )}
-
-
           </div>
         ) : (
-          ""
+          ''
         )}
 
-
-
         <div className="navbar">
+          <Link to="/" className="logo">
+            SURF CLUB
+          </Link>
 
-
-        <Link to="/">
-          <img
-            className="navbar__logo"
-            src={require("../layouts/images/BGLogoNew.svg")}
-          />
-        </Link>
-
-        <div style={{ display: "flex" }}>
-
-
-        <Link className="navbar__link hover" to="/buy-boards">
-           Buy Boards
-        </Link>
-
-        <Link className="navbar__link hover" to="/sell-a-board">
-          Sell Boards
-        </Link>
-
-        <Link className="navbar__link hover" to="/faqs">
-          Faqs
-        </Link>
-
-        <a className="navbar__link hover" target="_blank" href="https://medium.com/boardgrab">
-          Blog
-        </a>
-
-
-          {this.props.userAuthenticated && !this.props.isSeller ? (
-            <Link className="navbar__link" to="/sell-with-us">
-              Start Selling
+          <div style={{ display: 'flex' }}>
+            <Link className="navbar__link hover" to="/buy-boards">
+              Buy Boards
             </Link>
-          ) : (
-            ""
-          )}
-          {this.props.userAuthenticated ? (
-            <Link className="navbar__link hover" to="/account">
-              My Account{" "}
-              {this.props.hasNotifications ? (
-                <i className="fa fa-bell fc-red" />
-              ) : (
-                ""
-              )}{" "}
-            </Link>
-          ) : (
-            ""
-          )}
 
-          {this.props.userAuthenticated ? (
-            <Link
-              to="/authentication"
-              onClick={this.props.signOutUser}
+            <Link className="navbar__link hover" to="/sell-a-board">
+              Sell Boards
+            </Link>
+
+            <Link className="navbar__link hover" to="/faqs">
+              Faqs
+            </Link>
+
+            <a
               className="navbar__link hover"
+              target="_blank"
+              href="https://medium.com/boardgrab"
             >
-              Signout
-            </Link>
-          ) : (
-            <Link className="navbar__link " to="/authentication">
-              Login / Register
-            </Link>
-          )}
+              Blog
+            </a>
+
+            {this.props.userAuthenticated && !this.props.isSeller ? (
+              <Link className="navbar__link" to="/sell-with-us">
+                Start Selling
+              </Link>
+            ) : (
+              ''
+            )}
+            {this.props.userAuthenticated ? (
+              <Link className="navbar__link hover" to="/account">
+                My Account{' '}
+                {this.props.hasNotifications ? (
+                  <i className="fa fa-bell fc-red" />
+                ) : (
+                  ''
+                )}{' '}
+              </Link>
+            ) : (
+              ''
+            )}
+
+            {this.props.userAuthenticated ? (
+              <Link
+                to="/authentication"
+                onClick={this.props.signOutUser}
+                className="navbar__link hover"
+              >
+                Signout
+              </Link>
+            ) : (
+              <Link className="navbar__link " to="/authentication">
+                Login / Register
+              </Link>
+            )}
+          </div>
         </div>
-
-        </div>
-
-
-
-
-
       </div>
     );
   }

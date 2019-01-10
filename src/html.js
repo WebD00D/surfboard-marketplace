@@ -1,10 +1,10 @@
-import React from "react";
-import Helmet from "react-helmet";
+import React from 'react';
+import Helmet from 'react-helmet';
 
 let stylesStr;
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   try {
-    stylesStr = require("!raw-loader!../public/styles.css");
+    stylesStr = require('!raw-loader!../public/styles.css');
   } catch (e) {
     console.log(e);
   }
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "production") {
 
 module.exports = props => {
   let css;
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     css = (
       <style
         id="gatsby-inlined-css"
@@ -30,9 +30,10 @@ module.exports = props => {
         {props.headComponents}
         {css}
         <link
-          href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400"
           rel="stylesheet"
         />
+
         <script src="https://use.fontawesome.com/9aa665cf7f.js" />
         <script src="https://checkout.stripe.com/checkout.js" />
         <script

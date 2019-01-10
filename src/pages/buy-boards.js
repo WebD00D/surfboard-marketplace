@@ -1,23 +1,23 @@
-import React, { PureComponent } from "react";
-import Link from "gatsby-link";
-import fire from "../fire";
-import { Route, Redirect } from "react-router-dom";
-import MapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-import cx from "classnames";
-import _ from "lodash";
+import React, { PureComponent } from 'react';
+import Link from 'gatsby-link';
+import fire from '../fire';
+import { Route, Redirect } from 'react-router-dom';
+import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
+import cx from 'classnames';
+import _ from 'lodash';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import CityPin from "../components/CityPin";
-import Board from "../components/Board";
-import BoardFlyout from "../components/BoardFlyOut";
+import CityPin from '../components/CityPin';
+import Board from '../components/Board';
+import BoardFlyout from '../components/BoardFlyOut';
 
-import "../layouts/css/filters.css";
-import "../layouts/css/site.css";
-import "../layouts/css/fcss.css";
-import "../layouts/css/board.css";
+import '../layouts/css/filters.css';
+import '../layouts/css/site.css';
+import '../layouts/css/fcss.css';
+import '../layouts/css/board.css';
 
-import CITIES from "../data/cities.json";
+import CITIES from '../data/cities.json';
 
 class IndexPage extends PureComponent {
   constructor(props) {
@@ -37,64 +37,51 @@ class IndexPage extends PureComponent {
       board: 0,
       bestForMenuOpen: false,
       mobileLocationMenu: false,
-      mobileLocationTitle: "All Locations",
-      accessGranted: true,
+      mobileLocationTitle: 'All Locations',
+      accessGranted: true
     };
   }
 
   componentWillMount() {
     // check if user is signed in ..
-
-
-
     // end check if user is signed in..
   }
 
   checkAccess(value) {
-
-
-    if ( value === "KellySl8ter69!" ) {
-
-      this.props.allowAccess()
-
-
+    if (value === 'KellySl8ter69!') {
+      this.props.allowAccess();
     }
-
-
   }
 
   getCookie(cname) {
-    var name = cname + "=";
+    var name = cname + '=';
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(";");
+    var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == " ") {
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return '';
   }
 
   componentDidMount() {
-
-
     //const bgcookie = this.getCookie("boardgrab_user");
 
     const bgcookie = localStorage.getItem('boardgrab_user');
 
-
     if (bgcookie) {
       fire
         .database()
-        .ref("users/" + bgcookie)
-        .once("value")
+        .ref('users/' + bgcookie)
+        .once('value')
         .then(
           function(snapshot) {
-            console.log("SIGN IN SNAPSHOT", snapshot.val());
+            console.log('SIGN IN SNAPSHOT', snapshot.val());
             this.props.setCurrentUser(
               bgcookie,
               snapshot.val().username,
@@ -108,16 +95,16 @@ class IndexPage extends PureComponent {
     }
 
     this._updateDims();
-    window.addEventListener("resize", this._updateDims);
+    window.addEventListener('resize', this._updateDims);
 
     // GET ALL BOARDS
     fire
       .database()
-      .ref("/allBoardsList/boards")
-      .once("value")
+      .ref('/allBoardsList/boards')
+      .once('value')
       .then(
         function(snapshot) {
-          console.log("BOARDS", snapshot.val());
+          console.log('BOARDS', snapshot.val());
           this.props.getAllBoards(snapshot.val());
         }.bind(this)
       );
@@ -125,11 +112,11 @@ class IndexPage extends PureComponent {
     // GET ALL BOARDS BY REGION
     fire
       .database()
-      .ref("/boardsByRegion/")
-      .once("value")
+      .ref('/boardsByRegion/')
+      .once('value')
       .then(
         function(snapshot) {
-          console.log("BOARDS BY REGION", snapshot.val());
+          console.log('BOARDS BY REGION', snapshot.val());
           this.props.getAllBoardsByRegion(snapshot.val());
         }.bind(this)
       );
@@ -137,19 +124,19 @@ class IndexPage extends PureComponent {
     // GET ALL BOARDS BY CITY
     fire
       .database()
-      .ref("/boardsByCity/")
-      .once("value")
+      .ref('/boardsByCity/')
+      .once('value')
       .then(
         function(snapshot) {
-          console.log("BOARDS BY CITY", snapshot.val());
+          console.log('BOARDS BY CITY', snapshot.val());
           this.props.getAllBoardsByCity(snapshot.val());
         }.bind(this)
       );
   }
 
   _updateDims() {
-    if (document.getElementById("map")) {
-      const containerWidth = document.getElementById("map").clientWidth;
+    if (document.getElementById('map')) {
+      const containerWidth = document.getElementById('map').clientWidth;
       this.setState({
         width: containerWidth,
         height: window.innerHeight
@@ -195,7 +182,7 @@ class IndexPage extends PureComponent {
   }
 
   _handleBoardClick(board) {
-    console.log("HANDLE BOARD", board);
+    console.log('HANDLE BOARD', board);
     this.setState({
       board: board,
       flyout: true
@@ -211,18 +198,18 @@ class IndexPage extends PureComponent {
           <div
             className="t-sans"
             style={{
-              minHeight: "300px",
-              paddingBottom: "50px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column"
+              minHeight: '300px',
+              paddingBottom: '50px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column'
             }}
           >
-            <div style={{ marginBottom: "13px" }}>
+            <div style={{ marginBottom: '13px' }}>
               <b>No Boards Found!</b>
             </div>
-            <div style={{ marginBottom: "13px" }}>
+            <div style={{ marginBottom: '13px' }}>
               Why not be the first to sell?
             </div>
             {this.props.isSeller ? (
@@ -230,21 +217,21 @@ class IndexPage extends PureComponent {
                 list a board
               </Link>
             ) : (
-              ""
+              ''
             )}
             {this.props.userAuthenticated && !this.props.isSeller ? (
               <Link className="auth-button" to="/sell-with-us">
                 Start selling
               </Link>
             ) : (
-              ""
+              ''
             )}
             {!this.props.userAuthenticated ? (
               <Link className="auth-button" to="/authentication">
                 Create Account
               </Link>
             ) : (
-              ""
+              ''
             )}
           </div>
         );
@@ -253,18 +240,18 @@ class IndexPage extends PureComponent {
           <div
             className="t-sans"
             style={{
-              minHeight: "300px",
-              paddingBottom: "50px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column"
+              minHeight: '300px',
+              paddingBottom: '50px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column'
             }}
           >
-            <div style={{ marginBottom: "13px" }}>
+            <div style={{ marginBottom: '13px' }}>
               <b>No Boards Found!</b>
             </div>
-            <div style={{ marginBottom: "13px" }}>
+            <div style={{ marginBottom: '13px' }}>
               Why not be the first to sell?
             </div>
             {this.props.isSeller ? (
@@ -272,21 +259,21 @@ class IndexPage extends PureComponent {
                 list a board
               </Link>
             ) : (
-              ""
+              ''
             )}
             {this.props.userAuthenticated && !this.props.isSeller ? (
               <Link className="auth-button" to="/sell-with-us">
                 Start selling
               </Link>
             ) : (
-              ""
+              ''
             )}
             {!this.props.userAuthenticated ? (
               <Link className="auth-button" to="/authentication">
                 Create Account
               </Link>
             ) : (
-              ""
+              ''
             )}
           </div>
         );
@@ -297,13 +284,13 @@ class IndexPage extends PureComponent {
           return (
             <Link
               key={key}
-              style={{ textDecoration: "none", color: "#404040" }}
+              style={{ textDecoration: 'none', color: '#404040' }}
               to={`/board-detail/?board=${key}`}
             >
               <Board
                 key={`boards-${Number(key)}`}
                 board={this.props.boardsToDisplay[key]}
-              />{" "}
+              />{' '}
             </Link>
           );
         }.bind(this)
@@ -338,8 +325,7 @@ class IndexPage extends PureComponent {
     }
 
     return (
-      <div id="container" style={{ display: "flex" }}>
-
+      <div id="container" style={{ display: 'flex' }}>
         <div id="boards" className="boards-page-container">
           <div className="board-page-mobile-header">
             <div className="mobile-headline t-sans">
@@ -369,9 +355,9 @@ class IndexPage extends PureComponent {
                 <div className="mobile-menu-dropdown">
                   <div
                     onClick={() => {
-                      this.props.setRegionData("All Locations");
+                      this.props.setRegionData('All Locations');
                       this.setState({
-                        mobileLocationTitle: "All Locations",
+                        mobileLocationTitle: 'All Locations',
                         mobileLocationMenu: false
                       });
                     }}
@@ -382,9 +368,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Southern California");
+                      this.props.setRegionData('Southern California');
                       this.setState({
-                        mobileLocationTitle: "Southern California",
+                        mobileLocationTitle: 'Southern California',
                         mobileLocationMenu: false
                       });
                     }}
@@ -395,9 +381,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Northern California");
+                      this.props.setRegionData('Northern California');
                       this.setState({
-                        mobileLocationTitle: "Northern California",
+                        mobileLocationTitle: 'Northern California',
                         mobileLocationMenu: false
                       });
                     }}
@@ -408,9 +394,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Pacific North West");
+                      this.props.setRegionData('Pacific North West');
                       this.setState({
-                        mobileLocationTitle: "Pacific North West",
+                        mobileLocationTitle: 'Pacific North West',
                         mobileLocationMenu: false
                       });
                     }}
@@ -421,9 +407,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Mid Atlantic");
+                      this.props.setRegionData('Mid Atlantic');
                       this.setState({
-                        mobileLocationTitle: "Mid-Atlantic",
+                        mobileLocationTitle: 'Mid-Atlantic',
                         mobileLocationMenu: false
                       });
                     }}
@@ -434,9 +420,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("South East");
+                      this.props.setRegionData('South East');
                       this.setState({
-                        mobileLocationTitle: "South East",
+                        mobileLocationTitle: 'South East',
                         mobileLocationMenu: false
                       });
                     }}
@@ -447,9 +433,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("East Florida");
+                      this.props.setRegionData('East Florida');
                       this.setState({
-                        mobileLocationTitle: "East Florida",
+                        mobileLocationTitle: 'East Florida',
                         mobileLocationMenu: false
                       });
                     }}
@@ -460,9 +446,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Hawaii");
+                      this.props.setRegionData('Hawaii');
                       this.setState({
-                        mobileLocationTitle: "Hawaii",
+                        mobileLocationTitle: 'Hawaii',
                         mobileLocationMenu: false
                       });
                     }}
@@ -473,9 +459,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("Australia");
+                      this.props.setRegionData('Australia');
                       this.setState({
-                        mobileLocationTitle: "Australia",
+                        mobileLocationTitle: 'Australia',
                         mobileLocationMenu: false
                       });
                     }}
@@ -486,9 +472,9 @@ class IndexPage extends PureComponent {
 
                   <div
                     onClick={() => {
-                      this.props.setRegionData("South Africa");
+                      this.props.setRegionData('South Africa');
                       this.setState({
-                        mobileLocationTitle: "South Africa",
+                        mobileLocationTitle: 'South Africa',
                         mobileLocationMenu: false
                       });
                     }}
@@ -498,7 +484,7 @@ class IndexPage extends PureComponent {
                   </div>
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
           </div>
@@ -534,14 +520,14 @@ class IndexPage extends PureComponent {
               <div className="board-page-location__locations">
                 <div>
                   <div
-                    onClick={() => this.props.setRegionData("All Locations")}
+                    onClick={() => this.props.setRegionData('All Locations')}
                     className="boardpage-location__area t-sans"
                   >
                     All Locations
                   </div>
                   <div
                     onClick={() =>
-                      this.props.setRegionData("Southern California")
+                      this.props.setRegionData('Southern California')
                     }
                     className="boardpage-location__area t-sans"
                   >
@@ -549,7 +535,7 @@ class IndexPage extends PureComponent {
                   </div>
                   <div
                     onClick={() =>
-                      this.props.setRegionData("Northern California")
+                      this.props.setRegionData('Northern California')
                     }
                     className="boardpage-location__area t-sans"
                   >
@@ -557,40 +543,40 @@ class IndexPage extends PureComponent {
                   </div>
                   <div
                     onClick={() =>
-                      this.props.setRegionData("Pacific North West")
+                      this.props.setRegionData('Pacific North West')
                     }
                     className="boardpage-location__area t-sans"
                   >
                     Pacific North West
                   </div>
                   <div
-                    onClick={() => this.props.setRegionData("Mid Atlantic")}
+                    onClick={() => this.props.setRegionData('Mid Atlantic')}
                     className="boardpage-location__area t-sans"
                   >
                     Mid-Atlantic
                   </div>
                 </div>
-                <div style={{ marginLeft: "30px" }}>
+                <div style={{ marginLeft: '30px' }}>
                   <div
-                    onClick={() => this.props.setRegionData("Hawaii")}
+                    onClick={() => this.props.setRegionData('Hawaii')}
                     className="boardpage-location__area t-sans"
                   >
                     Hawaii
                   </div>
                   <div
-                    onClick={() => this.props.setRegionData("East Florida")}
+                    onClick={() => this.props.setRegionData('East Florida')}
                     className="boardpage-location__area t-sans"
                   >
                     East Florida
                   </div>
                   <div
-                    onClick={() => this.props.setRegionData("Australia")}
+                    onClick={() => this.props.setRegionData('Australia')}
                     className="boardpage-location__area t-sans"
                   >
                     Australia
                   </div>
                   <div
-                    onClick={() => this.props.setRegionData("South Africa")}
+                    onClick={() => this.props.setRegionData('South Africa')}
                     className="boardpage-location__area t-sans"
                   >
                     South Africa
@@ -608,23 +594,23 @@ class IndexPage extends PureComponent {
           id="map"
           className="board-map"
           style={{
-            width: "40%",
-            position: "fixed",
-            top: "60px",
+            width: '40%',
+            position: 'fixed',
+            top: '60px',
             bottom: 0,
             right: 0
           }}
         >
           <MapGL
             mapboxApiAccessToken={
-              "pk.eyJ1Ijoid2ViZG9vZCIsImEiOiJjajlnZTk0OTMyeGVhMndwOWJ4bDlqMDd1In0.TzYbLbUFco-TSaqObrvWTA"
+              'pk.eyJ1Ijoid2ViZG9vZCIsImEiOiJjajlnZTk0OTMyeGVhMndwOWJ4bDlqMDd1In0.TzYbLbUFco-TSaqObrvWTA'
             }
             width={this.state.width}
             height={this.state.height}
             latitude={this.props.latitude}
             longitude={this.props.longitude}
             zoom={this.props.mapZoom}
-            mapStyle="mapbox://styles/webdood/cj9gc6pvx8udn2ro4lyqrxuo6"
+            mapStyle="mapbox://styles/webdood/civpmgl2p00382jmyyvtm63f5"
             onViewportChange={viewport => {
               const { width, height, latitude, longitude, zoom } = viewport;
               this.props.setMapPosition(latitude, longitude);

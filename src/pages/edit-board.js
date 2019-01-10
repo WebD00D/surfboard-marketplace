@@ -325,8 +325,8 @@ class ListABoard extends Component {
 
     if (this.state.boardJustPosted) {
       return (
-        <div className="create-account">
-          <div className="create-account__headline m-b-20">Board Edited.</div>
+        <div className="create-account" style={{marginTop: "48px"}}>
+          <div className="create-account__headline m-b-20"><b>Board Edited.</b></div>
           <Link
             to={`/board-detail/?board=${this.state.boardId}`}
             className="td-none t-sans fc-green f-11 m-t-30"

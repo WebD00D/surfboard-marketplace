@@ -1,40 +1,38 @@
-import React, {PureComponent} from 'react';
-import "../layouts/css/board.css";
-
+import React, { PureComponent } from 'react';
+import '../layouts/css/board.css';
+import moment from 'moment';
 
 export default class Board extends PureComponent {
-
   render() {
-
-    const {onClick, board} = this.props;
-    console.log("BOARD", board)
+    const { onClick, board } = this.props;
+    console.log('BOARD', board);
 
     return (
-
       <div className="board-list-item" onClick={onClick}>
+         <div className="board-location f-13 ls-1  t-sans">
+            <i className="fa fa-map-marker" /> {board.city}, {board.region}
+          </div>
         <div className="fx fx-col t-sans">
-            <b className="f-16 ls-1">{board.name} - { board.sold ? <span className="fc-red">SOLD</span>: <span className="fc-green">${board.price}</span> }  </b>
-            <div className="f-13 ls-1 o-5 t-sans"><i className="fa fa-expand"></i> {board.dimensions}</div>
-            <div className="f-13 ls-1 o-5 t-sans"><i className="fa fa-map-marker"></i> {board.city}, { board.region}</div>
-            <div className="f-13 ls-1 t-sans" style={{marginTop: '6px', paddingRight: '22px'}}>
-             { board.description && board.description.substring(0,100) }...
-            </div>
+          <div className="f-16 ls-1 board-name" >
+            {board.name} -{' '}
+            {board.sold ? (
+              <span className="fc-red">SOLD</span>
+            ) : (
+              <span className="fc-green">${board.price}</span>
+            )}{' '}
+          </div>
+
+          <div
+            className="f-13 ls-1 t-sans"
+            style={{ paddingRight: '22px', fontWeight: '300' }}
+          >
+            {board.description && board.description.substring(0, 150)}...
+          </div>
         </div>
-          <img className="board-list-item__image" src={board.featurePhotoURL} />
       </div>
-
-
-        // <div className="board" onClick={onClick}>
-        //     <div className="board__image" style={{backgroundImage: `url(${board.featurePhotoURL})` }}></div>
-        //     <div className="board__meta"><label>{board.fins} Fin</label>|<label>{board.dimensions}</label></div>
-        //     <div className="board__name">{board.name}</div>
-        //     { board.sold ? <div className="board__price fc-red">SOLD</div> : <div className="board__price">${board.price} </div> }
-        //
-        // </div>
     );
   }
 }
-
 
 // id: 1,
 // userId: 1,
