@@ -1,0 +1,13 @@
+[
+    { "region": "Southern California", "latitude": 34.16181816123038 , "longitude": -116.806640625 },
+    { "region": "Northern California", "latitude": 38.34165619279595 , "longitude": -122.783203125 },
+    { "region": "Pacific North West", "latitude": 45.706179285330855 , "longitude": -123.837890625 },
+    { "region": "Mid Atlantic", "latitude": 37.37015718405753 , "longitude": -76.376953125 },
+    { "region": "South East", "latitude": 33.13755119234614 , "longitude": -80.244140625 },
+    { "region": "East Florida", "latitude": 27.68352808378776 , "longitude": -80.33203125 },
+    { "region": "West Florida", "latitude": 26.980828590472104 , "longitude": -82.705078125 },
+    { "region": "Hawaii", "latitude": 20.715015145512083 , "longitude": -156.62109375 },
+    { "region": "Melbourne", "latitude": -37.85750715625203 , "longitude": 145.01953125 },
+    { "region": "Sydney", "latitude": -33.87041555094182 , "longitude": 151.083984375 },
+    { "region": "Cape Town", "latitude": -33.87041555094182 , "longitude": 18.369140625 }
+]

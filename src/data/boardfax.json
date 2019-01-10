@@ -1,0 +1,29 @@
+[
+    {
+        "shapers": {
+            "shaper_id_1": {
+                "name": "Pyzel",
+                "models": [
+                    {
+                        "model_id_1": [
+                            {
+                                "name": "Pyzel",
+                                "sizes": [
+                                    "",
+                                    ""
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "registeredBoards": {
+            "reg_board_id_1": {
+                "shaper": "Rusty",
+                "model": "Dwart",
+                "dims": "..."
+            } // obvi have more data about it than this.
+        }
+    }
+]

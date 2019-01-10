@@ -1,0 +1,32 @@
+[
+    { "region": "Southern California", 
+        "cities": [
+            { "name": "San Diego", "latitude": 0 , "longitude": 0 },
+            { "name": "San Clemente", "latitude": 0 , "longitude": 0 },
+            { "name": "Encinitas", "latitude": 0 , "longitude": 0 },
+            { "name": "Ocean Side", "latitude": 0 , "longitude": 0 },
+            { "name": "Long Beach", "latitude": 0 , "longitude": 0 },
+            { "name": "Venice", "latitude": 0 , "longitude": 0 },
+            { "name": "Santa Monica", "latitude": 0 , "longitude": 0 },
+            { "name": "Malibu", "latitude": 0 , "longitude": 0 },
+            { "name": "Ventura", "latitude": 0 , "longitude": 0 },
+            { "name": "Santa Barbara", "latitude": 0 , "longitude": 0 }
+        ] 
+    },
+    { "region": "Northern California", 
+        "cities": [
+            { "name": "Monterey", "latitude": 0 , "longitude": 0 },
+            { "name": "Santa Cruz", "latitude": 0 , "longitude": 0 },
+            { "name": "San Jose", "latitude": 0 , "longitude": 0 },
+            { "name": "Palo Alto", "latitude": 0 , "longitude": 0 },
+            { "name": "San Mateo", "latitude": 0 , "longitude": 0 },
+            { "name": "San Francisco", "latitude": 0 , "longitude": 0 },
+            { "name": "Berkely", "latitude": 0 , "longitude": 0 },
+            { "name": "Vallejo", "latitude": 0 , "longitude": 0 },
+            { "name": "Benicia", "latitude": 0 , "longitude": 0 },
+            { "name": "Mendacino", "latitude": 0 , "longitude": 0 }
+        ] 
+    }
+    
+
+]

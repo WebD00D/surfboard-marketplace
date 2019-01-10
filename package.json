@@ -1,0 +1,43 @@
+{
+  "name": "bike-grab",
+  "description": "The best place to buy and sell used bikes",
+  "version": "1.0.0",
+  "author": "Christian Bryant <rva.christian91@gmail.com>",
+  "dependencies": {
+    "blueimp-load-image": "^2.18.0",
+    "dotenv": "^4.0.0",
+    "firebase": "^4.3.1",
+    "gatsby": "^1.9.17",
+    "gatsby-link": "^1.6.15",
+    "gatsby-plugin-react-helmet": "^1.0.5",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "react-disqus-comments": "^1.1.1",
+    "react-dropzone": "^4.2.7",
+    "react-firebase": "^2.2.7-4",
+    "react-intl": "^2.4.0",
+    "react-map-gl": "^3.1.1",
+    "react-moment": "^0.6.5",
+    "react-redux": "^5.0.6",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "classnames": "^2.2.5",
+    "prettier": "^1.6.1"
+  }
+}

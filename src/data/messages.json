@@ -1,0 +1,70 @@
+[
+    {
+        "messages-by-user": {
+            "user_one": {
+                "messages": {
+                    "message_one": {
+                        "isBuyer": true,
+                        "isSeller": false,
+                        "title": " 5'9'' Rusty Dwart ",
+                        "timestamp": 123455,
+                        "hasReadLast": false
+                    }
+                }
+            },
+            "user_two": {
+                "messages": {
+                    "message_one": {
+                        "isBuyer": false,
+                        "isSeller": true,
+                        "title": " 5'9'' Rusty Dwart ",
+                        "timestamp": 123455,
+                        "hasReadLast": true
+                    }
+                }
+            }
+        },
+        "message-transactions": {
+            "message_one": {
+                "currentOffer": 125.50,
+                "offer_accepted": false
+            }
+        },
+        "seller-messages": {
+            "messages": {
+                "message_one": {
+                    "buyer": "e125efgj4j55",
+                    "seller": "egjjrjf554s",
+                    "m1": {
+                        "name": "rva.christian",
+                        "message": "Lorem ipsum dolar set amit",
+                        "timestamp": 123455
+                    },
+                    "m2": {
+                        "name": "board_slinger_69",
+                        "message": "Lorem ipsum dolar set amit",
+                        "timestamp": 123455
+                    }
+                }
+            }
+        },
+        "buyer-messages": {
+            "messages": {
+                "message_one": {
+                    "buyer": "e125efgj4j55",
+                    "seller": "egjjrjf554s",
+                    "m1": {
+                        "name": "rva.christian",
+                        "message": "Lorem ipsum dolar set amit",
+                        "timestamp": 123455
+                    },
+                    "m2": {
+                        "name": "board_slinger_69",
+                        "message": "Lorem ipsum dolar set amit",
+                        "timestamp": 123455
+                    }
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,13 @@
+[{ "name": "All Cities", "latitude": 33.985787115598434 , "longitude": -118.47003936767578 },
+  { "name": "San Diego", "latitude": 32.71566625570317 , "longitude": -117.14996337890625 },
+  { "name": "La Jolla", "latitude": 32.83459674730076 , "longitude": -117.26669311523438 },     
+  { "name": "Del Mar", "latitude": 32.960281958039836 , "longitude": -117.257080078125 },         
+  { "name": "San Clemente", "latitude": 33.42914915719729 , "longitude": -117.61138916015625 },
+  { "name": "Encinitas", "latitude": 33.03399561940715 , "longitude": -117.279052734375 },
+  { "name": "Ocean Side", "latitude": 33.19847683493303 , "longitude": -117.36968994140625 },
+  { "name": "Long Beach", "latitude": 33.773439833797745 , "longitude": -118.19503784179688 },
+  { "name": "Venice", "latitude": 33.985787115598434 , "longitude": -118.47003936767578 },
+  { "name": "Santa Monica", "latitude": 34.021079493306914 , "longitude": -118.49647521972656 },
+  { "name": "Malibu", "latitude": 34.02990029603907 , "longitude": -118.78486633300781 },
+  { "name": "Ventura", "latitude": 34.27083595165 , "longitude": -119.23187255859375 },
+  { "name": "Santa Barbara", "latitude": 34.42730166315869 , "longitude": -119.70977783203125 }]

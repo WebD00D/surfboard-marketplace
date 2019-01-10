@@ -1,0 +1,52 @@
+.filter__text {
+    font-size: 12px;
+    letter-spacing: 0.92px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-right: 24px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.filter__text:hover {
+  cursor: pointer;
+}
+
+.filter__text img {
+   height: 10px;
+   margin-left: 8px;
+}
+
+.filter__menu {
+  position: absolute;
+  width: 250px;
+  background-color: #FFFFFF;
+  left: 0px;
+  top: 32px;
+  border: 1px solid #F5F5F5;
+}
+
+.filter__menu__item {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  border-bottom: 1px solid #f5f5f5;
+  transition: .2s ease;
+}
+
+.filter__menu__item:hover {
+  background-color: #f2f2f2;
+}
+
+.filter__menu__item--selected {
+  background-color: #498144;
+  color: #FFFFFF;
+}
+
+.filter__menu__item--selected:hover {
+  background-color: #498144;
+  color: #FFFFFF;
+}
