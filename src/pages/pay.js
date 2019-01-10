@@ -1,16 +1,16 @@
-import React, { PureComponent } from "react";
-import { Route, Redirect } from "react-router-dom";
-import fire from "../fire";
-import "../layouts/css/site.css";
-import "../layouts/css/board.css";
-import "../layouts/css/fcss.css";
-import "../layouts/css/tables.css";
-import cx from "classnames";
-import Link from "gatsby-link";
-import Moment from "react-moment";
-import _ from "lodash";
-import { connect } from "react-redux";
-import "whatwg-fetch";
+import React, { PureComponent } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import fire from '../fire';
+import '../layouts/css/site.css';
+import '../layouts/css/board.css';
+import '../layouts/css/fcss.css';
+import '../layouts/css/tables.css';
+import cx from 'classnames';
+import Link from 'gatsby-link';
+import Moment from 'react-moment';
+import _ from 'lodash';
+import { connect } from 'react-redux';
+import 'whatwg-fetch';
 
 class Payment extends PureComponent {
   constructor(props) {
@@ -19,28 +19,32 @@ class Payment extends PureComponent {
     this.handlePayment = this.handlePayment.bind(this);
 
     this.state = {
-      stripeUser: "",
-      sellerEmail: "",
-      sellerUsername: "",
-      sellerId: "",
-      buyerEmail: "",
+      buttonClicked: false,
+      stripeUser: '',
+      sellerEmail: '',
+      sellerUsername: '',
+      sellerId: '',
+      buyerEmail: '',
       amount: 0,
-      boardId: "",
+      boardId: '',
 
       board: `5'8" Rusty Dwart`,
-      paymentStatus: "",
-      status: "",
+      paymentStatus: '',
+      status: '',
       boardAlreadySold: false,
-      boardRegion: "",
-      boardCity: ""
+      boardRegion: '',
+      boardCity: ''
     };
   }
 
   handlePayment() {
+    this.setState({
+      buttonClicked: true
+    });
     const handler = StripeCheckout.configure({
-      key: "pk_live_QmEZFnVVwRLwBye5fWYTQDsT",
-      image: "https://stripe.com/img/documentation/checkout/marketplace.png",
-      locale: "auto",
+      key: 'pk_test_4MuZQsjjPxygGfpjv1SRbbrX',
+      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+      locale: 'auto',
       zipCode: true,
       token: function(token) {
         fetch(
@@ -53,8 +57,8 @@ class Payment extends PureComponent {
           })
           .then(
             function(r) {
-              console.log("PAYMENT OBJECT FROM API", r);
-              console.log("PAYMENT STATUS", r.status);
+              console.log('PAYMENT OBJECT FROM API', r);
+              console.log('PAYMENT STATUS', r.status);
 
               const isPaid = r.paid;
               const status = r.status;
@@ -63,9 +67,9 @@ class Payment extends PureComponent {
               const last4 = cardInfo.last4;
               const ccType = cardInfo.brand;
 
-              if (isPaid && status === "succeeded") {
+              if (isPaid && status === 'succeeded') {
                 this.setState({
-                  status: "succeeded"
+                  status: 'succeeded'
                 });
 
                 // hit the mail BG mail api.
@@ -84,7 +88,7 @@ class Payment extends PureComponent {
                     this.props.account_username
                   }&bodySnippet=${shortMessage}`
                 ).then(function(response) {
-                  console.log("PAYMENT TO SELLER EMAIL RESPONSE", response);
+                  console.log('PAYMENT TO SELLER EMAIL RESPONSE', response);
                 });
 
                 // to buyer
@@ -94,7 +98,7 @@ class Payment extends PureComponent {
                   this.state.sellerUsername
                 }! Visit your account to message and arrange delivery or pickup!`;
 
-                console.log("SELLER USERNAME", this.state.sellerUsername)
+                console.log('SELLER USERNAME', this.state.sellerUsername);
 
                 fetch(
                   `https://boardgrab-api.herokuapp.com/buyer-bought-a-board?email=${
@@ -103,7 +107,7 @@ class Payment extends PureComponent {
                     this.props.account_username
                   }&bodySnippet=${buyerMessage}`
                 ).then(function(response) {
-                  console.log("PURCHASE FROM BUYER EMAIL RESPONSE", response);
+                  console.log('PURCHASE FROM BUYER EMAIL RESPONSE', response);
                 });
 
                 // Update offers/boardid/ meta..
@@ -197,7 +201,6 @@ class Payment extends PureComponent {
                   }/pricePaid`
                 ] = this.state.amount;
 
-
                 console.log(
                   `amount ${this.state.amount}`,
                   `seller email ${this.state.sellerEmail}`,
@@ -206,18 +209,16 @@ class Payment extends PureComponent {
                   `seller id ${this.state.sellerId}`,
                   `seller user name ${this.state.sellerUsername}`,
                   `account user name ${this.props.account_username}`
-                )
+                );
 
                 // PUSH MESSAGE IN BOTH BUYER AND SELLER'S INBOXES..
 
                 let messageThreadId =
                   this.state.sellerId +
-                  "-" +
+                  '-' +
                   this.props.userId +
-                  "-" +
+                  '-' +
                   this.state.boardId;
-
-
 
                 const singleMessageId = Date.now();
 
@@ -313,33 +314,128 @@ class Payment extends PureComponent {
                   }/messages/${messageThreadId}/${singleMessageId}/message`
                 ] = purchaseMessage;
 
-
-
                 // message previews for both..
-                updates['/users/' + this.state.sellerId + '/hasNotifications'] = true;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/otherPersonsUserId'] = this.props.userId;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/messageType'] = 'SELL';
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/lastMessage'] = purchaseMessage;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/from'] = this.props.userId;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/read'] = false;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/lastMessageDate'] = singleMessageId;
-            		updates['/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/boardName'] = this.state.board;
-            		updates[
-            			'/users/' + this.state.sellerId  + '/messagePreviews/' + messageThreadId + '/buyerUser'
-            		] = this.props.account_username;
+                updates[
+                  '/users/' + this.state.sellerId + '/hasNotifications'
+                ] = true;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/otherPersonsUserId'
+                ] = this.props.userId;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/messageType'
+                ] =
+                  'SELL';
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/lastMessage'
+                ] = purchaseMessage;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/from'
+                ] = this.props.userId;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/read'
+                ] = false;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/lastMessageDate'
+                ] = singleMessageId;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/boardName'
+                ] = this.state.board;
+                updates[
+                  '/users/' +
+                    this.state.sellerId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/buyerUser'
+                ] = this.props.account_username;
 
-                updates['/users/' + this.props.userId + '/hasNotifications'] = true;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/otherPersonsUserId'] = this.state.sellerId;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/messageType'] = 'BUY';
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/lastMessage'] = purchaseMessage;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/to'] = this.state.sellerId;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/read'] = false;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/lastMessageDate'] = singleMessageId;
-            		updates['/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/boardName'] = this.state.board;
-            		updates[
-            			'/users/' + this.props.userId + '/messagePreviews/' + messageThreadId + '/sellerUser'
-            		] = this.state.sellerUsername;
-
+                updates[
+                  '/users/' + this.props.userId + '/hasNotifications'
+                ] = true;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/otherPersonsUserId'
+                ] = this.state.sellerId;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/messageType'
+                ] =
+                  'BUY';
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/lastMessage'
+                ] = purchaseMessage;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/to'
+                ] = this.state.sellerId;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/read'
+                ] = false;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/lastMessageDate'
+                ] = singleMessageId;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/boardName'
+                ] = this.state.board;
+                updates[
+                  '/users/' +
+                    this.props.userId +
+                    '/messagePreviews/' +
+                    messageThreadId +
+                    '/sellerUser'
+                ] = this.state.sellerUsername;
 
                 console.log(
                   `user id ${this.props.userId}`,
@@ -349,9 +445,9 @@ class Payment extends PureComponent {
                   `seller id ${this.state.sellerId}`,
                   `seller user name ${this.state.sellerUsername}`,
                   `account user name ${this.props.account_username}`
-                )
+                );
 
-                console.log("UPDATESSSS", updates);
+                console.log('UPDATESSSS', updates);
 
                 fire
                   .database()
@@ -363,31 +459,31 @@ class Payment extends PureComponent {
             }.bind(this)
           )
           .catch(function(ex) {
-            console.log("parsing failed", ex);
+            console.log('parsing failed', ex);
             // show message that something didn't go through. Don't update anything on the board status.
           });
       }.bind(this)
     });
 
     handler.open({
-      name: "BOARDGRAB",
+      name: 'BOARDGRAB',
       description: this.state.board,
       amount: this.state.amount
     });
   }
 
   componentDidMount() {
-    const sellerId = this.getQueryVariable("sellerId");
-    const boardId = this.getQueryVariable("boardId");
-    const boardName = this.getQueryVariable("boardName");
-    const amount = this.getQueryVariable("amount");
+    const sellerId = this.getQueryVariable('sellerId');
+    const boardId = this.getQueryVariable('boardId');
+    const boardName = this.getQueryVariable('boardName');
+    const amount = this.getQueryVariable('amount');
 
     // First check if this board has _just_ sold.
 
     fire
       .database()
       .ref(`offers/${boardId}`)
-      .once("value")
+      .once('value')
       .then(
         function(s) {
           var offerDetails = s.val();
@@ -395,8 +491,8 @@ class Payment extends PureComponent {
           if (offerDetails.paidFor === false) {
             fire
               .database()
-              .ref("users/" + sellerId)
-              .once("value")
+              .ref('users/' + sellerId)
+              .once('value')
               .then(
                 function(snapshot) {
                   this.setState({
@@ -417,7 +513,7 @@ class Payment extends PureComponent {
             fire
               .database()
               .ref(`/allBoardsList/boards/${boardId}`)
-              .once("value")
+              .once('value')
               .then(
                 function(s) {
                   this.setState({
@@ -439,9 +535,9 @@ class Payment extends PureComponent {
 
   getQueryVariable(variable) {
     var query = window.location.search.substring(1);
-    var vars = query.split("&");
+    var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split("=");
+      var pair = vars[i].split('=');
       if (pair[0] == variable) {
         return pair[1];
       }
@@ -460,11 +556,11 @@ class Payment extends PureComponent {
         <div className="site-container">
           {this.state.boardAlreadySold ? (
             <div>
-              <div className="f-28 t-sans ls-2 fw-500 m-b-20">
+              <div className="f-28 t-sans  m-b-20">
                 Bummer, looks like you just got snaked.
               </div>
               <div className="f-16 t-sans m-b-20">
-                However, there are plenty of boards in the sea.{" "}
+                However, there are plenty of boards in the sea.{' '}
                 <Link to="/buy-boards" className="fc-green">
                   Let's find you another.
                 </Link>
@@ -472,9 +568,9 @@ class Payment extends PureComponent {
             </div>
           ) : (
             <div>
-              {this.state.status === "succeeded" ? (
+              {this.state.status === 'succeeded' ? (
                 <div>
-                  <div className="f-28 t-sans ls-2 fw-500 m-b-20">
+                  <div className="f-28 t-sans ls-2 fw-300 m-b-20">
                     Payment Succeeded!
                   </div>
                   <div className="f-16 t-sans">
@@ -494,52 +590,52 @@ class Payment extends PureComponent {
                   </div>
                   <hr />
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Board:</span> {this.state.board}{" "}
+                    {' '}
+                    <span className="fw-300">Board:</span> {this.state.board}{' '}
                   </div>
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Seller:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Seller:</span>{' '}
                     {this.state.sellerUsername}
                   </div>
                   <div className="f-16 t-sans m-b-20">
-                    {" "}
-                    <span className="fw-500">Amount:</span> ${amountToShow}
+                    {' '}
+                    <span className="fw-300">Amount:</span> ${amountToShow}
                   </div>
                   <hr />
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Stripe User:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Stripe User:</span>{' '}
                     {this.state.stripeUser}
                   </div>
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Seller Email:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Seller Email:</span>{' '}
                     {this.state.sellerEmail}
                   </div>
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Seller ID:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Seller ID:</span>{' '}
                     {this.state.sellerId}
                   </div>
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Buyer Email:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Buyer Email:</span>{' '}
                     {this.state.buyerEmail}
                   </div>
 
                   <div className="f-16 t-sans">
-                    {" "}
-                    <span className="fw-500">Board City:</span>{" "}
+                    {' '}
+                    <span className="fw-300">Board City:</span>{' '}
                     {this.state.boardCity}
                   </div>
 
                   <button
-                    className="message-box__button ls-2"
-                    style={{ marginTop: "22px" }}
+                    className="message-box__button"
+                    style={{ marginTop: '22px' }}
                     onClick={() => this.handlePayment()}
                   >
-                    Pay ${amountToShow}
+                     Pay ${amountToShow}
                   </button>
                 </div>
               )}

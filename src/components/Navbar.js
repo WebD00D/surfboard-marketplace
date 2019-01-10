@@ -151,7 +151,7 @@ class Navbar extends PureComponent {
               target="_blank"
               href="https://medium.com/boardgrab"
             >
-              Blog
+              INSTA
             </a>
 
             {this.props.userAuthenticated && !this.props.isSeller ? (
@@ -236,7 +236,7 @@ class Navbar extends PureComponent {
               target="_blank"
               href="https://medium.com/boardgrab"
             >
-              Blog
+              INSTA
             </a>
 
             {this.props.userAuthenticated && !this.props.isSeller ? (

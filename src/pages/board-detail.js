@@ -207,10 +207,10 @@ class BoardDetail extends PureComponent {
 
   renderPhoto() {
     if (!this.state.board.featurePhotoURL)
-      return <div className="no-image">No photo provided :(</div>;
+      return <div className="no-image t-sans">No photo provided :(</div>;
 
     if (this.state.board.featurePhotoURL.indexOf('blob') > -1)
-      return <div className="no-image">No photo provided :(</div>;
+      return <div className="no-image t-sans">No photo provided :(</div>;
 
     return (
       <img
@@ -478,7 +478,7 @@ class BoardDetail extends PureComponent {
                     >
                       {' '}
                       Do not send payments offsite. If you do not pay through
-                      Boardgrab you are not eligible for Boardgrab or Stripe
+                      Surf Club you are not eligible for Surf Club or Stripe
                       Fraud Protection.
                     </div>
                     {this.state.isQuestion ? (
@@ -536,7 +536,7 @@ class BoardDetail extends PureComponent {
                       style={{ opacity: '0.6', marginBottom: '28px' }}
                     >
                       To inquire or make an offer on this board, you must have
-                      an active Boardgrab account.
+                      an active Surf Club account.
                     </div>
                     <Link
                       to="/authentication"

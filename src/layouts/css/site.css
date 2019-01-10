@@ -459,7 +459,6 @@ hr {
   border-top: none;
   font-size: 12px;
   font-family: 'Roboto', tahoma, helvetica, sans-serif;
-  letter-spacing: 2px;
 }
 
 @media (max-width: 600px) {

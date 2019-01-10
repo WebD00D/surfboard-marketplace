@@ -36,10 +36,10 @@ class TemplateWrapper extends React.Component {
     return (
       <div>
         <Helmet
-          title="Boardgrab Shop"
+          title="Surf Club"
           meta={[
-            { name: "description", content: "Sample" },
-            { name: "keywords", content: "sample, something" }
+            { name: "description", content: "The best place to buy and sell used surfboards" },
+            { name: "keywords", content: "surfing, surfboards" }
           ]}
         />
         <Navbar />

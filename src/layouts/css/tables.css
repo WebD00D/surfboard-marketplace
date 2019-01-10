@@ -25,12 +25,12 @@
 }
 
 .table-row--unread {
-  background-color: rgba(73,129,68, 0.8);
+  background-color:#111;
   color: white !important;
 }
 
 .table-row--unread:hover {
-  background-color: rgba(73,129,68, 1);
+  background-color: #252525;
 }
 
 .message-row {

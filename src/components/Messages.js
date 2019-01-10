@@ -34,7 +34,6 @@ class Messages extends PureComponent {
     var messageRef = fire.database().ref('/users/' + this.props.userId + '/messagePreviews');
 
     messageRef.on('value', function(snapshot){
-      console.log('MESSSSSAGE PREVIEWZZZ', snapshot.val())
       this.setState({
         messages: snapshot.val()
       })
@@ -73,16 +72,16 @@ class Messages extends PureComponent {
 
 
       sellMessages.push(
-        <Link to={`/message/?message=${key}&from=${value.otherPersonsUserId}&otherUser=${value.sellerUser}&board=${value.boardName}`} key={key} style={{textDecoration: 'none'}} className={cx([ "table-row table-row--messages", {"table-row--unread": !value.read} ])} >
-          <div className={cx(["t-sans f-11 ls-2 w-40p fc-green w-100p-m", { "fc-white": !value.read }])}>
-          <b>{value.boardName}</b>
+        <Link to={`/message/?message=${key}&from=${value.otherPersonsUserId}&otherUser=${value.sellerUser}&board=${value.boardName}`} key={key} style={{textDecoration: 'none', fontSize: '14px'}} className={cx([ "table-row table-row--messages", {"table-row--unread": !value.read} ])} >
+          <div className={cx(["t-sans  w-40p fc-green w-100p-m", { "fc-white": !value.read }])}>
+          <div>{value.boardName}</div>
           <div><small>{userAction}</small></div>
           </div>
-          <div className={cx(["t-sans f-11 ls-2 fw-500 w-40p w-100p-m fc-green", { "fc-white": !value.read }])}>
+          <div className={cx(["t-sans   w-40p w-100p-m fc-green", { "fc-white": !value.read }])}>
             <div>{value.lastMessage.substr(0,30)}...</div>
             <div style={{color: '#808080'}}>{value.buyerUser} </div>
           </div>
-          <div className={cx(["t-sans f-11  fw-500 ls-2 w-20p w-100p-m t-right t-left-m fx fx-col fc-green", { "fc-white": !value.read }])} style={{paddingRight:'8px'}}>
+          <div className={cx(["t-sans w-20p w-100p-m t-right t-left-m fx fx-col fc-green", { "fc-white": !value.read }])} style={{paddingRight:'8px'}}>
 
           <Moment format="MM/DD/YYYY hh:mm A" date={value.lastMessageDate} />
 

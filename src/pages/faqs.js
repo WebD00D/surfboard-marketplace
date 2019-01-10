@@ -8,13 +8,13 @@ const Faqs = () => (
       <b className="t-sans">FAQs</b>
     </div>
     <div className="site-container">
-      <h3 className="t-primary">Boardgrab</h3>
+      <h3 className="t-primary">Surf Club</h3>
       <div>
-        <p className="t-primary" style={{ fontWeight: 400, fontSize: 14 }}>
+        <p className="t-primary" style={{ fontWeight: 300, fontSize: 14 }}>
           Buying and selling used surfboards has always kind of sucked. Paying
           massive commissions to a third party , or dealing with the
           inconvenient/shady nuances of Craigslist doesn’t exactly give surfers
-          many options. 'Until now. Boardgrab is making selling used surfboards
+          many options. 'Until now. Surf Club is making selling used surfboards
           suck less. Sell for free, sell conveniently, and become part of a
           community of sellers just like you. Our hope, sellers will work
           together, share knowledge, and experience to make board selling better
@@ -29,10 +29,10 @@ const Faqs = () => (
         copy="When you see something you like, make an offer on the item (you will
       have to sign-up or log-in to the site). When the seller accepts or
       your offer you will be notified via both email and through
-      Boardgrab messages. You will be sent a link to check out using Stripe.
+      Surf Club messages. You will be sent a link to check out using Stripe.
       The seller might have accepted multiple offers so act fast. After
       sending your payment through Stripe you will be directed back to
-      Boardgrab."
+      Surf Club."
       />
 
       <Faq
@@ -50,7 +50,7 @@ const Faqs = () => (
       <Faq
         headline="I received an item I purchased and it did not come as described, how
           do I get a refund?"
-        copy="If you buy something on Boardgrab and the description does not
+        copy="If you buy something on Surf Club and the description does not
         accurately describe the item in terms of authenticity, color,
         condition, etc., then we recommend reaching out to the seller for a
         mutually satisfactory resolution. If you are unable to work it out
@@ -59,9 +59,8 @@ const Faqs = () => (
 
 
       <Faq
-        headline="What if there is an issue with the transaction? (Seller does not ship
-          the item, the item is damaged, etc.)"
-        copy="All payments on Boardgrab are done safely through Stripe.  If there is any issue with
+        headline="What if there is an issue with the transaction?"
+        copy="All payments on Surf Club are done safely through Stripe.  If there is any issue with
         the transaction, the buyer and seller should try to work out a mutual
         agreement for a partial or full refund."
        />
@@ -74,10 +73,10 @@ const Faqs = () => (
       <Faq
         headline="How do I sell an item?"
         copy="Create an account and click the 'Start Selling' link in the header.
-        Follow the instructions to connect your Boardgrab account to a Stripe
+        Follow the instructions to connect your Surf Club account to a Stripe
         Account, then upload photos and fill in information about the item
         you’re selling. Your board will then be listed on the shop page. We
-        will notify you via both via Boardgrab messages and email when people
+        will notify you via both via Surf Club messages and email when people
         ask questions or submit offers."
        />
 
@@ -85,16 +84,16 @@ const Faqs = () => (
         headline="How do I get paid?"
         copy="We use Stripe to process payments, a new and improved payment system
         which is safer and easier to use. Payments occur once a week so you
-        will see your funds in your Boardgrab stripe account no longer than 7 days
+        will see your funds in your Surf Club stripe account no longer than 7 days
         after you have been paid."
        />
 
        <Faq
-       headline="I just sold an item on Boardgrab, what’s next?"
+       headline="I just sold an item on Surf Club, what’s next?"
        copy="When you make a sale, the funds will be put into your Stripe account
-         and a message will be sent to your Boardgrab inbox with the buyer’s
+         and a message will be sent to your Surf Club inbox with the buyer’s
          shipping address. You will then receive an email from
-         team@boardgrab.com and stripe.com with transaction details. Once
+         us and stripe.com with transaction details. Once
          you’ve confirmed the payment in your Stripe account, please ship or
          make pickup arrangements with your buyer."
        />
@@ -102,7 +101,7 @@ const Faqs = () => (
        <Faq
         headline="Where do the funds go when I sell an item?"
         copy="The funds will be put into your Stripe account as soon as a buyer
-        purchases an item. The funds will appear immediately in you Boardgrab
+        purchases an item. The funds will appear immediately in you Surf Club
         Stripe account. Funds will be sent to your linked bank account/credit
         or debit card in no more than 7 days."
        />
@@ -129,7 +128,7 @@ const Faqs = () => (
        <Faq
         headline="How much does it cost?"
         copy="For a buyer, it doesn’t cost anything other than the price of the board. For a seller it costs a small
-        6% Boardgrab fee to help us pay our bills."
+        6% Surf Club fee to help us pay our bills."
        />
 
 
@@ -137,7 +136,7 @@ const Faqs = () => (
       <h3 className="t-primary">Marketplace Code of Conduct</h3>
 
       <div>
-        <p className="t-primary" style={{ fontWeight: 400, fontSize: 14 }}>
+        <p className="t-primary" style={{ fontWeight: 300, fontSize: 14 }}>
           <ol>
             <li>
               Be respectful when dealing with other users. Bad behavior will not
@@ -172,11 +171,11 @@ const Faqs = () => (
 
       <div>
         <b className="t-primary">Offsite Transactions</b>
-        <p className="t-primary" style={{ fontWeight: 400, fontSize: 14 }}>
+        <p className="t-primary" style={{ fontWeight: 300, fontSize: 14 }}>
           A common tactic used by scammers is to offer a discount on the asking
-          price to entice users to go outside Boardgrab. Users who attempt to
+          price to entice users to go outside Surf Club. Users who attempt to
           conduct transactions offsite are almost always fraudulent. Offsite
-          transactions are not eligible for Boardgrab Protection and may not be
+          transactions are not eligible for Surf Club Protection and may not be
           eligible for Stripe protection either. For your safety we actively
           warn and ban users who attempt to conduct unsafe, offsite
           transactions.
@@ -185,13 +184,13 @@ const Faqs = () => (
 
       <div>
         <b className="t-primary">Zero-Tolerance Fraud Policy</b>
-        <p className="t-primary" style={{ fontWeight: 400, fontSize: 14 }}>
+        <p className="t-primary" style={{ fontWeight: 300, fontSize: 14 }}>
           We take fraud very seriously. In order to keep the community safe for
-          all Boardgrab useres, the Boardgrab team constantly monitors the
+          all Surf Club useres, the Surf Club team constantly monitors the
           marketplace for fraudulent items and dishonest buyers/sellers. Our
           Zero-Tolerance Policy means that anyone posting counterfeit goods,
           posting items they do not own, or engaging in any other duplicitous
-          behavior will be immediately banned from Boardgrab. Please exercise
+          behavior will be immediately banned from Surf Club. Please exercise
           good judgement when using the marketplace.
         </p>
       </div>

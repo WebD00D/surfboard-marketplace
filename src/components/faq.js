@@ -29,8 +29,8 @@ class Faq extends PureComponent {
     return (
       <div>
         <div className="m-b-30" >
-        <b onClick={()=> this.setState({ open: !this.state.open })} className="t-primary hover">{this.props.headline} <i className={cx([ "fa", {"fa-chevron-down": !this.state.open, "fa-chevron-up": this.state.open } ])}></i></b>
-        <p className={cx([ "t-primary", {"d-none": !this.state.open} ])} style={{ fontWeight: 400, fontSize: 14 }}>
+        <div onClick={()=> this.setState({ open: !this.state.open })} className="t-primary hover">{this.props.headline} <i className={cx([ "fa", {"fa-chevron-down": !this.state.open, "fa-chevron-up": this.state.open } ])}></i></div>
+        <p className={cx([ "t-primary", {"d-none": !this.state.open} ])} style={{ fontWeight: 300, fontSize: 14 }}>
           {this.props.copy}
         </p>
         </div>
