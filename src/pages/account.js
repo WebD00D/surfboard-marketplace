@@ -1,21 +1,21 @@
-import React, { PureComponent } from "react";
-import { Route, Redirect } from "react-router-dom";
-import cx from "classnames";
-import fire from "../fire";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import cx from 'classnames';
+import fire from '../fire';
+import { connect } from 'react-redux';
 
-import "../layouts/css/site.css";
-import "../layouts/css/board.css";
-import "../layouts/css/fcss.css";
-import "../layouts/css/account.css";
+import '../layouts/css/site.css';
+import '../layouts/css/board.css';
+import '../layouts/css/fcss.css';
+import '../layouts/css/account.css';
 
-import Disqus from "../components/Disqus";
-import Messages from "../components/Messages";
-import MyQuiver from "../components/MyQuiver";
-import Settings from "../components/Settings";
-import OffersReceived from "../components/OffersReceived";
-import OffersMade from "../components/OffersMade";
-import Purchases from "../components/Purchases";
+import Disqus from '../components/Disqus';
+import Messages from '../components/Messages';
+import MyQuiver from '../components/MyQuiver';
+import Settings from '../components/Settings';
+import OffersReceived from '../components/OffersReceived';
+import OffersMade from '../components/OffersMade';
+import Purchases from '../components/Purchases';
 
 class Account extends PureComponent {
   constructor(props) {
@@ -24,8 +24,8 @@ class Account extends PureComponent {
     this.handleTabChange = this.handleTabChange.bind(this);
 
     this.state = {
-      activeTab: "Messages",
-      stripeDashboardLink: ""
+      activeTab: 'Messages',
+      stripeDashboardLink: ''
     };
   }
 
@@ -38,85 +38,86 @@ class Account extends PureComponent {
   componentDidMount() {
     // check if user is signed in ..
 
-    const bgcookie = localStorage.getItem('boardgrab_user')
+    const bgcookie = localStorage.getItem('surfclub_user');
 
-  
     let stripeId;
 
     if (bgcookie) {
       fire
         .database()
-        .ref("users/" + bgcookie)
-        .once("value")
+        .ref('users/' + bgcookie)
+        .once('value')
         .then(
           function(snapshot) {
-            console.log("SIGN IN SNAPSHOT", snapshot.val());
-            stripeId = snapshot.val().stripe;
-            this.props.setCurrentUser(
-              bgcookie,
-              snapshot.val().username,
-              snapshot.val().email,
-              snapshot.val().hasNotifications,
-              snapshot.val().paypal_email,
-              snapshot.val().seller
-            );
-          }.bind(this)
-        ).then(function(){
+            console.log('SIGN IN SNAPSHOT', snapshot.val());
 
-
-          // clear notifications..
-          var updates = {};
-          updates["users/" + this.props.userId + "/hasNotifications"] = false;
-          fire
-            .database()
-            .ref()
-            .update(updates);
-          this.props.clearNotifications();
-
-          // GET SELLERS DASHBOARD LINK...
-          console.log("STRIPE", this.props.stripe)
-          console.log(stripeId)
-
-          if (this.props.isSeller) {
-            fetch(
-              `https://boardgrab-api.herokuapp.com/get-login-link?link=${
-                stripeId
-              }`
-            )
-              .then(function(response) {
-                return response.json();
-              })
-              .then(
-                function(r) {
-
-                  this.setState({
-                    stripeDashboardLink: r.url
-                  });
-                }.bind(this)
+            if (snapshot.val()) {
+              stripeId = snapshot.val().stripe;
+              this.props.setCurrentUser(
+                bgcookie,
+                snapshot.val().username,
+                snapshot.val().email,
+                snapshot.val().hasNotifications,
+                snapshot.val().paypal_email,
+                snapshot.val().seller
               );
-          }
+            }
+          }.bind(this)
+        )
+        .then(
+          function() {
+            // clear notifications..
+            var updates = {};
+            updates['users/' + this.props.userId + '/hasNotifications'] = false;
+            fire
+              .database()
+              .ref()
+              .update(updates);
+            this.props.clearNotifications();
+
+            // GET SELLERS DASHBOARD LINK...
+            console.log('STRIPE', this.props.stripe);
+            console.log(stripeId);
+
+            // https://surfclub-api.herokuapp.com
+
+            const url = 'http://localhost:8081'
 
 
-        }.bind(this))
+            if (this.props.isSeller) {
+              fetch(
+                `${url}/get-login-link?link=${stripeId}`
+              )
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(
+                  function(r) {
+                    this.setState({
+                      stripeDashboardLink: r.url
+                    });
+                  }.bind(this)
+                );
+            }
+          }.bind(this)
+        );
     }
-
-
   }
 
   getCookie(cname) {
-    var name = cname + "=";
+    var name = cname + '=';
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(";");
+    var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == " ") {
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return '';
   }
 
   render() {
@@ -128,118 +129,118 @@ class Account extends PureComponent {
         <div className="site-container">
           <div
             className="account_tabs t-sans f-13 fw-500 t-upper ls-2 fx-j-c"
-            style={{ marginBottom: "44px" }}
+            style={{ marginBottom: '44px' }}
           >
             <div
-              onClick={() => this.handleTabChange("Messages")}
-              className={cx(["account_tab hover"], {
-                "account_tab--active": this.state.activeTab === "Messages"
+              onClick={() => this.handleTabChange('Messages')}
+              className={cx(['account_tab hover'], {
+                'account_tab--active': this.state.activeTab === 'Messages'
               })}
             >
               Messages
             </div>
             {this.props.isSeller ? (
               <div
-                onClick={() => this.handleTabChange("Received")}
-                className={cx(["account_tab hover"], {
-                  "account_tab--active": this.state.activeTab === "Received"
+                onClick={() => this.handleTabChange('Received')}
+                className={cx(['account_tab hover'], {
+                  'account_tab--active': this.state.activeTab === 'Received'
                 })}
               >
                 Offers Received
               </div>
             ) : (
-              ""
+              ''
             )}
             <div
-              onClick={() => this.handleTabChange("Made")}
-              className={cx(["account_tab hover"], {
-                "account_tab--active": this.state.activeTab === "Made"
+              onClick={() => this.handleTabChange('Made')}
+              className={cx(['account_tab hover'], {
+                'account_tab--active': this.state.activeTab === 'Made'
               })}
             >
               Offers Made
             </div>
             <div
-              onClick={() => this.handleTabChange("Purchases")}
-              className={cx(["account_tab hover"], {
-                "account_tab--active": this.state.activeTab === "Purchases"
+              onClick={() => this.handleTabChange('Purchases')}
+              className={cx(['account_tab hover'], {
+                'account_tab--active': this.state.activeTab === 'Purchases'
               })}
             >
               Purchases
             </div>
             {this.props.isSeller ? (
               <div
-                onClick={() => this.handleTabChange("My Quiver")}
-                className={cx(["account_tab hover"], {
-                  "account_tab--active": this.state.activeTab === "My Quiver"
+                onClick={() => this.handleTabChange('My Quiver')}
+                className={cx(['account_tab hover'], {
+                  'account_tab--active': this.state.activeTab === 'My Quiver'
                 })}
               >
                 Listings
               </div>
             ) : (
-              ""
+              ''
             )}
 
             {this.props.isSeller ? (
               <a
                 href={this.state.stripeDashboardLink}
                 target="_blank"
-                className={cx(["account_tab hover fc-black"], {
-                  "account_tab--active": this.state.activeTab === "Settings"
+                className={cx(['account_tab hover fc-black'], {
+                  'account_tab--active': this.state.activeTab === 'Settings'
                 })}
                 style={{
                   opacity: 0.5,
-                  color: "#808080",
-                  textDecoration: "none"
+                  color: '#808080',
+                  textDecoration: 'none'
                 }}
               >
                 Stripe
               </a>
             ) : (
-              ""
+              ''
             )}
           </div>
 
-          {this.state.activeTab === "Messages" ? (
+          {this.state.activeTab === 'Messages' ? (
             <div className="tab">
               <Messages />
             </div>
           ) : (
-            ""
+            ''
           )}
-          {this.state.activeTab === "Made" ? (
+          {this.state.activeTab === 'Made' ? (
             <div className="tab">
               <OffersMade />
             </div>
           ) : (
-            ""
+            ''
           )}
-          {this.state.activeTab === "Received" ? (
+          {this.state.activeTab === 'Received' ? (
             <div className="tab">
               <OffersReceived />
             </div>
           ) : (
-            ""
+            ''
           )}
-          {this.state.activeTab === "Purchases" ? (
+          {this.state.activeTab === 'Purchases' ? (
             <div className="tab">
               <Purchases />
             </div>
           ) : (
-            ""
+            ''
           )}
-          {this.state.activeTab === "My Quiver" ? (
+          {this.state.activeTab === 'My Quiver' ? (
             <div className="tab">
               <MyQuiver />
             </div>
           ) : (
-            ""
+            ''
           )}
-          {this.state.activeTab === "Settings" ? (
+          {this.state.activeTab === 'Settings' ? (
             <div className="tab">
               <Settings />
             </div>
           ) : (
-            ""
+            ''
           )}
         </div>
       </div>

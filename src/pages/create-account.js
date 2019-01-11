@@ -13,12 +13,6 @@ class IndexPage extends PureComponent {
     super(props);
     this.handleShopRegistration = this.handleShopRegistration.bind(this);
 
-    //     fire.auth().signOut().then(function() {
-    //   console.log('Signed Out');
-    // }, function(error) {
-    //   console.error('Sign Out Error', error);
-    // });
-
     var u = fire.auth().currentUser;
     console.log("SIGNED IN USER", u);
 
@@ -39,15 +33,6 @@ class IndexPage extends PureComponent {
 
   handleShopRegistration() {
     let db = fire.database();
-
-    console.log(
-    'account_user: ', this.state.username,
-    '  shop_name: ', this.state.shop_name,
-    '  shop_city: ' , this.state.shop_city,
-    '  shop_state: ', this.state.shop_state,
-    '  shop_website: ', this.state.shop_website,
-    '  shop_phone: ', this.state.shop_phone
-    )
 
 
     const username = this.state.username;

@@ -94,9 +94,9 @@ class ListABoard extends Component {
   componentDidMount() {
     // check if user is signed in ..
 
-    //  const bgcookie = this.getCookie("boardgrab_user");
+    //  const bgcookie = this.getCookie("surfclub_user");
 
-    const bgcookie = localStorage.getItem('boardgrab_user');
+    const bgcookie = localStorage.getItem('surfclub_user');
 
     if (bgcookie) {
       fire
@@ -106,14 +106,17 @@ class ListABoard extends Component {
         .then(
           function(snapshot) {
             console.log('SIGN IN SNAPSHOT', snapshot.val());
-            this.props.setCurrentUser(
-              bgcookie,
-              snapshot.val().username,
-              snapshot.val().email,
-              snapshot.val().hasNotifications,
-              snapshot.val().paypal_email,
-              snapshot.val().seller
-            );
+
+            if (snapshot.val()) {
+              this.props.setCurrentUser(
+                bgcookie,
+                snapshot.val().username,
+                snapshot.val().email,
+                snapshot.val().hasNotifications,
+                snapshot.val().paypal_email,
+                snapshot.val().seller
+              );
+            }
           }.bind(this)
         );
     }
@@ -870,10 +873,12 @@ class ListABoard extends Component {
       <div>
         <div className="page-header">Sell a Board</div>
         <div className="create-account">
-
           <div className="hide-dt">
-            <h4 className="t-sans" style={{lineHeight: "1.5"}}>Hey there! For the time being, you'll need to upload your listing on a desktop computer!</h4>
-            <img src={require("../layouts/images/noboards.gif")} />
+            <h4 className="t-sans" style={{ lineHeight: '1.5' }}>
+              Hey there! For the time being, you'll need to upload your listing
+              on a desktop computer!
+            </h4>
+            <img src={require('../layouts/images/noboards.gif')} />
           </div>
           <div className="hide-mobile">
             <Link to="/account" className="td-none t-sans fc-green f-11 ">

@@ -37,9 +37,7 @@ const reducer = (state, action) => {
 	}
 
 	if (action.type === `SET_CURRENT_USER`) {
-		console.log('setting curret user', action.userId, action.username, action.hasNotifications);
-
-		console.log("BOARDGRAB USER COOKIE..");
+		
 
 		return {
 			...state,
@@ -64,7 +62,8 @@ const reducer = (state, action) => {
 
 	if (action.type === `LOGOUT_USER`) {
 
-		//document.cookie = "boardgrab_user" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		// document.cookie = "surfclub_user" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        localStorage.setItem('surfclub_user', null);
 
 		fire.auth().signOut();
 		return {
@@ -76,8 +75,6 @@ const reducer = (state, action) => {
 	}
 
 	if (action.type === `GET_ALL_BOARDS`) {
-		console.log('ALL BOARDS', action.boards);
-
 		return {
 			...state,
 			allBoardsList: action.boards,
@@ -86,8 +83,6 @@ const reducer = (state, action) => {
 	}
 
 	if (action.type === `GET_ALL_BOARDS_BY_REGION`) {
-		console.log('BOARDS BY REGION', action.boards);
-
 		return {
 			...state,
 			boardsByRegion: action.boards
@@ -95,8 +90,6 @@ const reducer = (state, action) => {
 	}
 
 	if (action.type === `GET_ALL_BOARDS_BY_CITY`) {
-		console.log('BOARDS BY CITY', action.boards);
-
 		return {
 			...state,
 			boardsByCity: action.boards
@@ -174,7 +167,6 @@ const reducer = (state, action) => {
 			return i === state.selectedRegion;
 		});
 
-		console.log('BOARDS BY REGION DATA', boardsByRegionData);
 
 		if (!boardsByCityData) {
 			boardsByCityData = [];
@@ -198,7 +190,6 @@ const reducer = (state, action) => {
 			});
 
 			regionData = _.find(state.citesByRegion, function(o) {
-				console.log(o.region, regionToSet.region);
 				return o.region === regionToSet.region;
 			});
 		}
@@ -218,7 +209,6 @@ const reducer = (state, action) => {
 
 	if (action.type === `SET_LISTING_CITIES`) {
 		const selectedRegion = action.region;
-		console.log('SET IT,', action.region);
 		const regionData = _.find(state.citesByRegion, function(o) {
 			return o.region === selectedRegion;
 		});
@@ -227,7 +217,6 @@ const reducer = (state, action) => {
 			return o.region === selectedRegion;
 		});
 
-		console.log('BOARDS BY REGION', boardsByRegionData);
 
 		if (!boardsByRegionData) {
 			boardsByRegionData = [];

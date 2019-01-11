@@ -13,13 +13,13 @@ import "../layouts/css/stripe.css";
 const SellWithUs = () => (
   <div>
   <div className="page-header">
-      <b className="t-sans">Selling with Boardgrab</b>
+      <b className="t-sans">Selling with Surf Club</b>
   </div>
   <div className="site-container">
     <p className="t-primary" style={{ fontWeight: 400, fontSize: 14 }}>
-      Boardgrab uses Stripe as our payment system. It’s just like PayPal, but
+      Surf Club uses Stripe as our payment system. It’s just like PayPal, but
       even easier! Click the button below to allow people to pay you! If you
-      don’t want more money, click the back button to return to the Boardgrab
+      don’t want more money, click the back button to return to the Surf Club
       homepage.
     </p>
     <a

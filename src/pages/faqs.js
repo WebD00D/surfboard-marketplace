@@ -38,7 +38,7 @@ const Faqs = () => (
       <Faq
         headline="This listing looks suspicious, what should I do?"
         copy="If you have reason to believe that a seller or item is fraudulent flick
-          us an email to help@boardgrab.com and let us know."
+          us an email to christian@rollingyouth and let us know."
       />
 
       <Faq

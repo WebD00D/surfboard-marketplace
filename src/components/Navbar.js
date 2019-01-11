@@ -118,7 +118,7 @@ class Navbar extends PureComponent {
             </div>
 
             <Link
-              to="/buy-boards"
+              to="/"
               onClick={() => {
                 this.setState({ mobileMenuOpen: false });
               }}
@@ -149,7 +149,7 @@ class Navbar extends PureComponent {
             <a
               className="mobile-menu__item hover"
               target="_blank"
-              href="https://medium.com/boardgrab"
+              href="https://www.instagram.com/joinsurfclub/"
             >
               INSTA
             </a>
@@ -219,13 +219,17 @@ class Navbar extends PureComponent {
           </Link>
 
           <div style={{ display: 'flex' }}>
-            <Link className="navbar__link hover" to="/buy-boards">
+            <Link className="navbar__link hover" to="/">
               Buy Boards
             </Link>
 
-            <Link className="navbar__link hover" to="/sell-a-board">
-              Sell Boards
-            </Link>
+            {this.props.isSeller ? (
+              <Link className="navbar__link hover" to="/sell-a-board">
+                Sell Boards
+              </Link>
+            ) : (
+              ''
+            )}
 
             <Link className="navbar__link hover" to="/faqs">
               Faqs
@@ -234,7 +238,7 @@ class Navbar extends PureComponent {
             <a
               className="navbar__link hover"
               target="_blank"
-              href="https://medium.com/boardgrab"
+              href="https://www.instagram.com/joinsurfclub/"
             >
               INSTA
             </a>

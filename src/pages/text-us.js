@@ -7,7 +7,7 @@ const Textus = () => (
     <h4 className="t-primary">Of course you do.</h4>
     <p className="t-primary" style={{fontWeight: 400, fontSize: 14}}>
 
-    BoardTexts is an SMS-based service powered by the Boardgrab staff (no robots here).
+    BoardTexts is an SMS-based service powered by the Surf Club staff (no robots here).
 
     All you have to do is send us a message and we will text you back and solve all of your board finding problems. It’s free, and it’s #notabot.
     <br/><br/>

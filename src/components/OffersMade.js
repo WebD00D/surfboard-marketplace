@@ -74,9 +74,9 @@ class OffersMade extends PureComponent {
                   </div>
                 ) : (
                   <div style={{ paddingRight: '30px' }}>
-                    <div className="fc-green t-sans fw-500">
-                      Offer Accepted!
-                      <Link className="fc-green" to={paymentLink}>
+                    <div style={{color: "#02fdae"}} className=" t-sans fw-500">
+                      Offer Accepted - {' '}
+                      <Link className="fc-green"  to={paymentLink}>
                         Pay Now!
                       </Link>
                     </div>

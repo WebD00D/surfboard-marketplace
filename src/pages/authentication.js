@@ -38,11 +38,10 @@ class Authentication extends PureComponent {
             .once("value")
             .then(
               function(snapshot) {
-                console.log("SIGN IN SNAPSHOT", snapshot.val());
-                document.cookie = "boardgrab_user" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-                document.cookie = `boardgrab_user=${user.uid}`;
+                document.cookie = "surfclub_user" + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = `surfclub_user=${user.uid}`;
 
-                localStorage.setItem('boardgrab_user', user.uid);
+                localStorage.setItem('surfclub_user', user.uid);
 
                 this.props.setCurrentUser(
                   user.uid,
@@ -61,7 +60,6 @@ class Authentication extends PureComponent {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log("LOGIN ERROR", errorCode, errorMessage);
         this.setState({
           error: errorMessage
         })
@@ -81,18 +79,18 @@ class Authentication extends PureComponent {
       .then(
         function(user) {
           const newUser = fire.auth().currentUser;
-
-          localStorage.setItem('boardgrab_user', user.uid);
-
-
+          localStorage.setItem('surfclub_user', user.uid);
           this.props.createAndSignInUser(
             user.uid,
             this.state.username,
             this.state.email
           );
 
+          const url = 'http://localhost:8081';
+
+          // https://surfclub-api.herokuapp.com
           fetch(
-            `https://boardgrab-api.herokuapp.com/send-welcome-email?email=${
+            `${url}/send-welcome-email?email=${
               this.state.email
             }`
           ).then(function(response) {
@@ -112,7 +110,7 @@ class Authentication extends PureComponent {
 
   render() {
     if (this.props.userAuthenticated && this.state.newUser) {
-      return <Redirect to="/welcome-to-boardgrab" />;
+      return <Redirect to="/welcome-to-surfclub" />;
     }
 
     if (this.props.userAuthenticated && !this.state.newUser) {

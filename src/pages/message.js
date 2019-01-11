@@ -111,9 +111,11 @@ class Message extends PureComponent {
   sendMessage() {
 
     const shortMessage = this.state.message.substr(0,30) + "...";
+    const url = 'http://localhost:8081';
+    // https://surfclub-api.herokuapp.com
 
     fetch(
-      `https://boardgrab-api.herokuapp.com/send-message-notification?email=${this.state.sendMessageBackToEmail}&username=${this.props.account_username}&bodySnippet=${shortMessage}`
+      `${url}/send-message-notification?email=${this.state.sendMessageBackToEmail}&username=${this.props.account_username}&bodySnippet=${shortMessage}`
     ).then(function(response) {
       console.log("RESPONSE", response);
     });
@@ -260,8 +262,8 @@ class Message extends PureComponent {
                     </div>
                     <div className="t-sans f-13 lh-18" style={{ opacity: '0.6' }}>
                       {' '}
-                      Do not send payments offsite. If you do not pay through Boardgrab you are
-                      not eligible for Boardgrab or Stripe Fraud Protection.
+                      Do not send payments offsite. If you do not pay through Surf Club you are
+                      not eligible for Surf Club or Stripe Fraud Protection.
                     </div>
 
                       <div>

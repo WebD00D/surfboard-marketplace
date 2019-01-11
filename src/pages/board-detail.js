@@ -49,11 +49,11 @@ class BoardDetail extends PureComponent {
   }
 
   componentDidMount() {
-    //const bgcookie = this.getCookie("boardgrab_user");
+    //const bgcookie = this.getCookie("surfclub_user");
 
-    const bgcookie = localStorage.getItem('boardgrab_user');
+    const bgcookie = localStorage.getItem('surfclub_user');
 
-    //localStorage.setItem('boardgrab_user', user.uid);
+    //localStorage.setItem('surfclub_user', user.uid);
 
     if (bgcookie) {
       fire
@@ -63,14 +63,17 @@ class BoardDetail extends PureComponent {
         .then(
           function(snapshot) {
             console.log('SIGN IN SNAPSHOT', snapshot.val());
-            this.props.setCurrentUser(
-              bgcookie,
-              snapshot.val().username,
-              snapshot.val().email,
-              snapshot.val().hasNotifications,
-              snapshot.val().paypal_email,
-              snapshot.val().seller
-            );
+
+            if (snapshot.val()) {
+              this.props.setCurrentUser(
+                bgcookie,
+                snapshot.val().username,
+                snapshot.val().email,
+                snapshot.val().hasNotifications,
+                snapshot.val().paypal_email,
+                snapshot.val().seller
+              );
+            }
           }.bind(this)
         );
     }
@@ -116,8 +119,12 @@ class BoardDetail extends PureComponent {
       this.state.board.name
     }! Visit your account to view!`;
 
+
+    const url = 'http://localhost:8081';
+    // https://surfclub-api.herokuapp.com
+
     fetch(
-      `https://boardgrab-api.herokuapp.com/send-message-or-offer-to-seller?email=${
+      `${url}/send-message-or-offer-to-seller?email=${
         this.state.sellerEmail
       }&username=${this.props.account_username}&bodySnippet=${shortMessage}`
     ).then(function(response) {
@@ -233,8 +240,11 @@ class BoardDetail extends PureComponent {
       this.state.board.name
     }! Visit your account to view and reply!`;
 
+    const url = 'http://localhost:8081';
+    // https://surfclub-api.herokuapp.com
+
     fetch(
-      `https://boardgrab-api.herokuapp.com/send-message-or-offer-to-seller?email=${
+      `${url}/send-message-or-offer-to-seller?email=${
         this.state.sellerEmail
       }&username=${this.props.account_username}&bodySnippet=${shortMessage}`
     ).then(function(response) {

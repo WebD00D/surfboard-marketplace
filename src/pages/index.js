@@ -70,11 +70,12 @@ class IndexPage extends PureComponent {
   }
 
   componentDidMount() {
-    //const bgcookie = this.getCookie("boardgrab_user");
+    //const bgcookie = this.getCookie("surfclub_user");
 
-    const bgcookie = localStorage.getItem('boardgrab_user');
+    const bgcookie = localStorage.getItem('surfclub_user');
+    console.log('BGCOOKIE', bgcookie);
 
-    if (bgcookie) {
+    if (bgcookie != null) {
       fire
         .database()
         .ref('users/' + bgcookie)
@@ -82,16 +83,21 @@ class IndexPage extends PureComponent {
         .then(
           function(snapshot) {
             console.log('SIGN IN SNAPSHOT', snapshot.val());
-            this.props.setCurrentUser(
-              bgcookie,
-              snapshot.val().username,
-              snapshot.val().email,
-              snapshot.val().hasNotifications,
-              snapshot.val().paypal_email,
-              snapshot.val().seller
-            );
+
+            if (snapshot.val()) {
+              this.props.setCurrentUser(
+                bgcookie,
+                snapshot.val().username,
+                snapshot.val().email,
+                snapshot.val().hasNotifications,
+                snapshot.val().paypal_email,
+                snapshot.val().seller
+              );
+            }
           }.bind(this)
         );
+    } else {
+      console.log('NOT LOGGED IN!!');
     }
 
     this._updateDims();
@@ -104,7 +110,7 @@ class IndexPage extends PureComponent {
       .once('value')
       .then(
         function(snapshot) {
-          console.log('BOARDS', snapshot.val());
+          
           this.props.getAllBoards(snapshot.val());
         }.bind(this)
       );
@@ -116,7 +122,6 @@ class IndexPage extends PureComponent {
       .once('value')
       .then(
         function(snapshot) {
-          console.log('BOARDS BY REGION', snapshot.val());
           this.props.getAllBoardsByRegion(snapshot.val());
         }.bind(this)
       );
@@ -128,7 +133,6 @@ class IndexPage extends PureComponent {
       .once('value')
       .then(
         function(snapshot) {
-          console.log('BOARDS BY CITY', snapshot.val());
           this.props.getAllBoardsByCity(snapshot.val());
         }.bind(this)
       );
@@ -620,7 +624,7 @@ class IndexPage extends PureComponent {
               </div>
               {this.props.isSeller ? (
                 <Link className="auth-button" to="/sell-a-board">
-                 Have a board to list?
+                  Have a board to list?
                 </Link>
               ) : (
                 ''

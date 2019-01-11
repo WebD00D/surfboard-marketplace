@@ -47,8 +47,12 @@ class Payment extends PureComponent {
       locale: 'auto',
       zipCode: true,
       token: function(token) {
+
+        const url = 'http://localhost:8081';
+        // const prod 'https://surfclub-api.herokuapp.com';
+
         fetch(
-          `https://boardgrab-api.herokuapp.com/payment?token=${
+          `${url}/payment?token=${
             token.id
           }&stripeUser=${this.state.stripeUser}&amount=${this.state.amount}`
         )
@@ -82,7 +86,7 @@ class Payment extends PureComponent {
                 }! Visit your account to message and arrange delivery or pickup!`;
 
                 fetch(
-                  `https://boardgrab-api.herokuapp.com/seller-sold-a-board?email=${
+                  `${url}/seller-sold-a-board?email=${
                     this.state.sellerEmail
                   }&username=${
                     this.props.account_username
@@ -101,7 +105,7 @@ class Payment extends PureComponent {
                 console.log('SELLER USERNAME', this.state.sellerUsername);
 
                 fetch(
-                  `https://boardgrab-api.herokuapp.com/buyer-bought-a-board?email=${
+                  `${url}/buyer-bought-a-board?email=${
                     this.props.currentUserEmail
                   }&username=${
                     this.props.account_username
@@ -466,7 +470,7 @@ class Payment extends PureComponent {
     });
 
     handler.open({
-      name: 'BOARDGRAB',
+      name: 'SURF CLUB',
       description: this.state.board,
       amount: this.state.amount
     });

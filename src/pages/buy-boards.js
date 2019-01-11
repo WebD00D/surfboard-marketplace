@@ -70,9 +70,9 @@ class IndexPage extends PureComponent {
   }
 
   componentDidMount() {
-    //const bgcookie = this.getCookie("boardgrab_user");
+    //const bgcookie = this.getCookie("surfclub_user");
 
-    const bgcookie = localStorage.getItem('boardgrab_user');
+    const bgcookie = localStorage.getItem('surfclub_user');
 
     if (bgcookie) {
       fire
@@ -82,14 +82,16 @@ class IndexPage extends PureComponent {
         .then(
           function(snapshot) {
             console.log('SIGN IN SNAPSHOT', snapshot.val());
-            this.props.setCurrentUser(
-              bgcookie,
-              snapshot.val().username,
-              snapshot.val().email,
-              snapshot.val().hasNotifications,
-              snapshot.val().paypal_email,
-              snapshot.val().seller
-            );
+            if (snapshot.val()) {
+              this.props.setCurrentUser(
+                bgcookie,
+                snapshot.val().username,
+                snapshot.val().email,
+                snapshot.val().hasNotifications,
+                snapshot.val().paypal_email,
+                snapshot.val().seller
+              );
+            }
           }.bind(this)
         );
     }

@@ -199,6 +199,7 @@
   font-weight: 700;
   letter-spacing: 0.92px;
   font-family: 'Roboto', sans-serif;
+ 
 }
 
 .board-info__short-desc {
@@ -375,7 +376,7 @@ hr {
   display: flex;
   justify-content: space-between;
   transition: 0.3s ease;
-  border: 2px solid #111;
+  
 }
 
 .board-list-item:hover {
@@ -392,10 +393,11 @@ hr {
 
 .board-location {
     position: absolute;
-    right: -2px;
+    right: 0px;
     top: 0px;
     border-bottom-left-radius: 4px;
-    background-color: #111;
+    border-top-right-radius: 4px;
+    background-color: #02fdae;
     color: #fff;
     font-weight: 300;
     padding-left: 16px;
