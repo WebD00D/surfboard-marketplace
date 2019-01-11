@@ -23,7 +23,7 @@ const SellWithUs = () => (
       homepage.
     </p>
     <a
-   href="https://connect.stripe.com/express/oauth/authorize?redirect_uri=http://localhost:8000/seller-confirmation/&client_id=ca_EJZZvqavEkVgvoB9Jl5uqh2QGl0xOW4P&state=VA"
+   href="https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://joinsurfclub.com/seller-confirmation/&client_id=ca_EJZZRRjqYacCCQPbFSeNecZSdXtcp2Ar&state=VA"
    className="stripe-connect"
  >
    <span>Connect with Stripe</span> </a>
