@@ -34,7 +34,7 @@ export default class Disqus extends React.Component {
         // document.body.appendChild(script)
 
         var d = document, s = d.createElement('script');
-        s.src = 'https://boardgrab-comments.disqus.com/embed.js';
+        s.src = 'https://joinsurfclub.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
       }

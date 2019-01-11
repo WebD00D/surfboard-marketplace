@@ -55,11 +55,8 @@ class OffersReceived extends PureComponent {
           buyerEmail = snapshot.val().email;
 
           const shortMessage = `${this.props.account_username} has accepted your offer for ${boardName}! Visit your account to view and purchase!`
-          const url = 'http://localhost:8081';
-
-          // https://surfclub-api.herokuapp.com
-
-
+          //const url = 'http://localhost:8081';
+          const url =  'https://surfclub-api.herokuapp.com';
 
           fetch(
             `${url}/send-accepted-offer-notification?email=${buyerEmail}&username=${this.props.account_username}&bodySnippet=${shortMessage}`

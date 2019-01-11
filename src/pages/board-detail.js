@@ -120,8 +120,11 @@ class BoardDetail extends PureComponent {
     }! Visit your account to view!`;
 
 
-    const url = 'http://localhost:8081';
+    // const url = 'http://localhost:8081';
     // https://surfclub-api.herokuapp.com
+
+    const url =  'https://surfclub-api.herokuapp.com';
+
 
     fetch(
       `${url}/send-message-or-offer-to-seller?email=${
@@ -240,8 +243,10 @@ class BoardDetail extends PureComponent {
       this.state.board.name
     }! Visit your account to view and reply!`;
 
-    const url = 'http://localhost:8081';
+   // const url = 'http://localhost:8081';
     // https://surfclub-api.herokuapp.com
+    const url =  'https://surfclub-api.herokuapp.com';
+
 
     fetch(
       `${url}/send-message-or-offer-to-seller?email=${
@@ -712,19 +717,6 @@ class BoardDetail extends PureComponent {
               </div>
             </div>
 
-            {/* <div className="board-info__section b-top-solid p-t-18">
-							<div className="board-info__section-row t-sans f-16 fx-a-end">
-								<div className="about-seller">
-									About the seller, <br /> Bailey
-								</div>
-								<span style={{ marginLeft: '14px' }}>
-									Bailey has grown up and lived in Venice Beach all his life, surfing most if not
-									every day. Favorite board is a GH, and favorite surfer (for obvious reasons) is
-									Jordy Smith.
-								</span>
-							</div>
-						</div> */}
-
             <div className="board-info__section b-top-solid p-t-18">
               <div className="board-info__section-row t-sans f-16 fx-a-end">
                 <div className="fw-500 t-upper ls-2 f-11 mw-150p">
@@ -805,7 +797,7 @@ class BoardDetail extends PureComponent {
 
         <Disqus
           title="Board Comments"
-          shortname="boardgrab-comments"
+          shortname="joinsurfclub"
           identifier={this.state.boardId}
         />
       </div>

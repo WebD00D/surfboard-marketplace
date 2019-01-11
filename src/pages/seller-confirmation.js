@@ -54,7 +54,8 @@ class SellerConfirmation extends Component {
 
             const code = this.getQueryVariable('code');
 
-            const url = 'http://localhost:8081';
+            // const url = 'http://localhost:8081';
+            const url =  'https://surfclub-api.herokuapp.com';
 
             // https://surfclub-api.herokuapp.com
 

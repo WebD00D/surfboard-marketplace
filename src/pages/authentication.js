@@ -86,7 +86,9 @@ class Authentication extends PureComponent {
             this.state.email
           );
 
-          const url = 'http://localhost:8081';
+         //  const url = 'http://localhost:8081';
+          const url =  'https://surfclub-api.herokuapp.com';
+
 
           // https://surfclub-api.herokuapp.com
           fetch(

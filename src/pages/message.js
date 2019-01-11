@@ -111,8 +111,11 @@ class Message extends PureComponent {
   sendMessage() {
 
     const shortMessage = this.state.message.substr(0,30) + "...";
-    const url = 'http://localhost:8081';
+   // const url = 'http://localhost:8081';
     // https://surfclub-api.herokuapp.com
+
+    const url =  'https://surfclub-api.herokuapp.com';
+
 
     fetch(
       `${url}/send-message-notification?email=${this.state.sendMessageBackToEmail}&username=${this.props.account_username}&bodySnippet=${shortMessage}`

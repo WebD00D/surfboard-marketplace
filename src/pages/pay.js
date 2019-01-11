@@ -42,14 +42,14 @@ class Payment extends PureComponent {
       buttonClicked: true
     });
     const handler = StripeCheckout.configure({
-      key: 'pk_test_4MuZQsjjPxygGfpjv1SRbbrX',
+      key: 'pk_live_4MuZBQJz1AkWqEQ7bR0pfjmI',
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       zipCode: true,
       token: function(token) {
-
-        const url = 'http://localhost:8081';
+        // const url = 'http://localhost:8081';
         // const prod 'https://surfclub-api.herokuapp.com';
+        const url =  'https://surfclub-api.herokuapp.com';
 
         fetch(
           `${url}/payment?token=${
