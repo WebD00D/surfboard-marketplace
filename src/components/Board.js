@@ -52,7 +52,8 @@ export default class Board extends Component {
             className="f-13 ls-1 t-sans"
             style={{ paddingRight: '22px', fontWeight: '300' }}
           >
-            {board.description && board.description.substring(0, 150)}...
+            {board.description && board.description.substring(0, 120)}...
+            {board.isShopPost ? <div className="shop-tag">#SURFSHOPLISTING</div> :''}
           </div>
         </div>
 

@@ -87,7 +87,6 @@ class Account extends PureComponent {
             if (this.props.isSeller) {
               fetch(`${url}/get-login-link?link=${stripeId}`)
                 .then(function(response) {
-                  console.log(response.json());
                   return response.json();
                 })
                 .then(

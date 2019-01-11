@@ -119,12 +119,10 @@ class BoardDetail extends PureComponent {
       this.state.board.name
     }! Visit your account to view!`;
 
-
     // const url = 'http://localhost:8081';
     // https://surfclub-api.herokuapp.com
 
-    const url =  'https://surfclub-api.herokuapp.com';
-
+    const url = 'https://surfclub-api.herokuapp.com';
 
     fetch(
       `${url}/send-message-or-offer-to-seller?email=${
@@ -243,10 +241,9 @@ class BoardDetail extends PureComponent {
       this.state.board.name
     }! Visit your account to view and reply!`;
 
-   // const url = 'http://localhost:8081';
+    // const url = 'http://localhost:8081';
     // https://surfclub-api.herokuapp.com
-    const url =  'https://surfclub-api.herokuapp.com';
-
+    const url = 'https://surfclub-api.herokuapp.com';
 
     fetch(
       `${url}/send-message-or-offer-to-seller?email=${
@@ -491,10 +488,7 @@ class BoardDetail extends PureComponent {
                       className="t-sans f-13 lh-18"
                       style={{ opacity: '0.6' }}
                     >
-                      {' '}
-                      Do not send payments offsite. If you do not pay through
-                      Surf Club you are not eligible for Surf Club or Stripe
-                      Fraud Protection.
+                      
                     </div>
                     {this.state.isQuestion ? (
                       <div>
@@ -591,7 +585,12 @@ class BoardDetail extends PureComponent {
                 <span>{this.state.board.region}</span>
               </div>
               <div className="board-info__short-desc">
-                Sold by <b className="fc-green">{this.state.sellerUserName}</b>
+                Sold by{' '}
+                <b className="fc-green">
+                  {this.state.board.isShopPost
+                    ? this.state.board.brand
+                    : this.state.sellerUserName}
+                </b>
               </div>
               {this.state.board.sold ? (
                 <div
@@ -641,13 +640,19 @@ class BoardDetail extends PureComponent {
                     </button>
                   </div>
                   <div>
-                    <button
-                      onClick={() => {
-                        this.setState({ isOffer: true, isQuestion: false });
-                      }}
-                    >
-                      Make an Offer
-                    </button>
+                    {this.state.board.isShopPost ? (
+                      <a target="_blank" href={this.state.board.pageLink}>
+                        <button>Purchase from Shop</button>
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          this.setState({ isOffer: true, isQuestion: false });
+                        }}
+                      >
+                        Make an Offer
+                      </button>
+                    )}
                   </div>
                 </div>
               )}
