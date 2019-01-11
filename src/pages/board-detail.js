@@ -426,7 +426,7 @@ class BoardDetail extends PureComponent {
   }
 
   checkURL(img) {
-    if (img.indexOf('blog') > -1) {
+    if (img.indexOf('blob') > -1) {
       return false;
     }
     return true;

@@ -199,7 +199,6 @@
   font-weight: 700;
   letter-spacing: 0.92px;
   font-family: 'Roboto', sans-serif;
- 
 }
 
 .board-info__short-desc {
@@ -319,23 +318,6 @@ hr {
   font-family: 'Roboto', sans-serif;
 }
 
-.no-image {
-  height: 400px;
-  width: 100%;
-  background: linear-gradient(
-      rgba(223, 223, 223, 0.5),
-      rgba(223, 223, 223, 0.5)
-    ),
-    url('../images/BGG_deck.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .board-pricing {
   height: 60px;
   display: flex;
@@ -374,9 +356,9 @@ hr {
   padding-bottom: 24px;
   border-radius: 4px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   transition: 0.3s ease;
-  
 }
 
 .board-list-item:hover {
@@ -392,24 +374,22 @@ hr {
 }
 
 .board-location {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    border-bottom-left-radius: 4px;
-    border-top-right-radius: 4px;
-    background-color: #02fdae;
-    color: #fff;
-    font-weight: 300;
-    padding-left: 16px;
-    padding-right: 16px;
-    font-size: 12px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #02fdae;
+  color: #fff;
+  font-weight: 300;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 12px;
 }
 
 .board-name {
   margin-top: 12px;
 }
-
-
 
 .board-photo {
   height: 150px;
@@ -467,4 +447,40 @@ hr {
   .board-list-item__image {
     max-height: 700px;
   }
+}
+
+.board-preview-photo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px;
+  background-color: #fff;
+
+  height: 150px;
+  width: 150px;
+}
+
+.no-image {
+  background: linear-gradient(
+      rgba(223, 223, 223, 0.5),
+      rgba(223, 223, 223, 0.5)
+    ),
+    url('../images/BGG_deck.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+
+  height: 150px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-wrap {
+  margin-right: 16px;
+
 }
