@@ -82,18 +82,17 @@ class Account extends PureComponent {
             // https://surfclub-api.herokuapp.com
 
             // const url = 'http://localhost:8081'
-            const url =  'https://surfclub-api.herokuapp.com';
-
+            const url = 'https://surfclub-api.herokuapp.com';
 
             if (this.props.isSeller) {
-              fetch(
-                `${url}/get-login-link?link=${stripeId}`
-              )
+              fetch(`${url}/get-login-link?link=${stripeId}`)
                 .then(function(response) {
+                  console.log(response.json());
                   return response.json();
                 })
                 .then(
                   function(r) {
+                    console.log(r);
                     this.setState({
                       stripeDashboardLink: r.url
                     });
