@@ -440,8 +440,7 @@ hr {
 
 @media (max-width: 600px) {
   .board-list-item {
-    flex-direction: column-reverse;
-    align-items: flex-start;
+   flex-direction: column;
   }
 
   .board-list-item__image {
@@ -462,7 +461,7 @@ hr {
 
 .no-image {
   background: linear-gradient(
-      rgba(223, 223, 223, 0.5),
+      rgba(26, 18, 18, 0.5),
       rgba(223, 223, 223, 0.5)
     ),
     url('../images/BGG_deck.jpg');
@@ -482,5 +481,21 @@ hr {
 
 .photo-wrap {
   margin-right: 16px;
+
+}
+
+@media (max-width: 600px) {
+  .board-preview-photo {
+    display: none;
+  }
+
+  .no-image {
+    display: none;
+  }
+
+  .board-list-item {
+    align-items: flex-start;
+  }
+
 
 }
